@@ -2,7 +2,7 @@
 Mobile application for tracking expenses and budgeting
 #### __Credits__
   * beanmakerturnipfarmer
-  * mmohfujulm
+  * mohfujulm
 #### __License__
   * TBD
 _____________________________________________________________________________________________________________________________
