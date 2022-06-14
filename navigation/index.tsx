@@ -100,7 +100,7 @@ function BottomTabNavigator() {
         name="Calendar"
         component={CalendarScreen}
         options={{
-          title: 'Calendar',
+          title: 'Calendar Screen',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
