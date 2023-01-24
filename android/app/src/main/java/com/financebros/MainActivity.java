@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "financebros";
+    return "main"; //changed from regular name to "main" due to expo.
   }
 
   /**
