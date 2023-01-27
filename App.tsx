@@ -18,7 +18,7 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "Starter">
+      <Stack.Navigator screenOptions={{ headerShown: true }} /* if changed to false disables header*/ initialRouteName = "Starter">
         <Stack.Screen name = "Starter" component = {Starter}/>
         <Stack.Screen name = "Profile" component = {Profile}/>
         <Stack.Screen name = "Calendar" component = {Calendar}/>
