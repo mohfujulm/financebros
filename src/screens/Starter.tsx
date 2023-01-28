@@ -27,7 +27,6 @@ function Starter({ navigation }) {
             </Pressable>
           </View>
           
-
         </View>
         <View style={styles.MainContainer}>
           <Text></Text>
