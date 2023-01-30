@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+
+//all styles imported here
+import styles from "./src/styling/mainStyle";
 
 //all screens are imported here
 import Starter from "./src/screens/Starter";
@@ -12,13 +16,51 @@ import Metrics from "./src/screens/Metrics";
 import Profile from "./src/screens/Profile";
 import Aesthetics from "./src/screens/Aesthetics";
 
-function App(): JSX.Element {
+function Navigator(){
+
+  const Navigation = useNavigation();
+  const currentScreenName = String(Navigation.getState().routes[Navigation.getState().index].name);
+  return (
+    <View style={styles.navContainer}> 
+      <View style={styles.TitleBar}>
+        <Text style={styles.iconStyle}> ||| </Text>
+        <Text style={styles.NavHeader}> {currentScreenName}</Text>
+      </View>
+
+      <View style = {styles.IconBar}>
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Profile')}>  
+                  <Text style = {styles.buttonText}> P </Text>  
+        </Pressable>
+
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Calendar')}>  
+                  <Text style = {styles.buttonText}> C </Text>  
+        </Pressable>
+
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Metrics')}>  
+                  <Text style = {styles.buttonText}> M </Text>  
+        </Pressable>
+      </View>
+      
+    </View>
+  );
+}
+
+
+export default function App(props:any): JSX.Element {
   
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: true }} /* if changed to false disables header*/ initialRouteName = "Starter">
+      <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{ 
+                        header:(props) => {return <Navigator {...props} />},
+                      }}
+        initialRouteName = "Starter"
+      >
         <Stack.Screen name = "Starter" component = {Starter}/>
         <Stack.Screen name = "Profile" component = {Profile}/>
         <Stack.Screen name = "Calendar" component = {Calendar}/>
@@ -28,24 +70,3 @@ function App(): JSX.Element {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;

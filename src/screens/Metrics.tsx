@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
 function Metrics() {
     return (
       <View style = {styles.sectionContainer}> 
-        <Text> hello its me the profile </Text>
+        <Text> hello its me the Metrics </Text>
       </View>
     );
 }
