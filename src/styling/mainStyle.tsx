@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
+
+// const width = useWindowDimensions();
 
 const styles = StyleSheet.create({
     navContainer: {
       marginTop: '5%',
       padding: '2%',
       flexDirection: 'row',
-      width: '100%',
+      width: 500, //Need to figure out how to make this an actual percentage
       // flex : 1,
       /* Apparently react native has this super cool feature where if you declare the first element
       flex box, it makes your header take up half the screen. Super cool dude! */
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
       marginLeft: '2%',
       backgroundColor: "black",
       marginBottom: 10,
-      height: '60%',
+      height: '65%',
       
       marginTop: 10,
     },
