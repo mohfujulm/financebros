@@ -12,6 +12,28 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function Starter() {
     return (
       <View>
+        <View style = {styles.sectionContainer}> 
+          <View><Text style={styles.iconStyle}> ||| </Text></View>
+          <View><Text> Title of Thing</Text></View>
+
+          <View style = {styles.IconBar}>
+            <Pressable style = {styles.pressableButton}
+                      onPress = {() => navigation.navigate('Profile')}>  
+                      <Text style = {styles.buttonText}> Profile </Text>  
+            </Pressable>
+
+            <Pressable style = {styles.pressableButton}
+                      onPress = {() => navigation.navigate('Calendar')}>  
+                      <Text style = {styles.buttonText}> Calendar </Text>  
+            </Pressable>
+
+            <Pressable style = {styles.pressableButton}
+                      onPress = {() => navigation.navigate('Aesthetics')}>  
+                      <Text style = {styles.buttonText}> Aesthetics </Text>  
+            </Pressable>
+          </View>
+          
+        </View>
         <View style={styles.MainContainer}>
           <Text>Fuck you</Text>
         </View>
