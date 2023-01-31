@@ -1,7 +1,12 @@
 import React from 'react';
-import { Button, Image, ImageBackground, StyleSheet, View, Text, Pressable, Animated } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, View, Text, Pressable, Animated, useWindowDimensions } from 'react-native';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+
+//all styles imported here
+import styles from "./src/styling/mainStyle";
 
 //all screens are imported here
 import Starter from "./src/screens/Starter";
@@ -12,58 +17,52 @@ import Metrics from "./src/screens/Metrics";
 import Profile from "./src/screens/Profile";
 import Aesthetics from "./src/screens/Aesthetics";
 
-function App(): JSX.Element {
+function Navigator(){
+
+  const Navigation = useNavigation();
+  const currentScreenName = String(Navigation.getState().routes[Navigation.getState().index].name);
+  return (
+    <View style={styles.navContainer}> 
+      <View style={styles.TitleBar}>
+        <Text style={styles.iconStyle}> ||| </Text>
+        <Text style={styles.NavHeader}> {currentScreenName}</Text>
+      </View>
+
+      <View style = {styles.IconBar}>
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Profile')}>  
+                  <Text style = {styles.buttonText}> P </Text>  
+        </Pressable>
+
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Calendar')}>  
+                  <Text style = {styles.buttonText}> C </Text>  
+        </Pressable>
+
+        <Pressable style = {styles.pressableButton}
+                  onPress = {() => Navigation.navigate('Metrics')}>  
+                  <Text style = {styles.buttonText}> M </Text>  
+        </Pressable>
+      </View>
+      
+    </View>
+  );
+}
+
+
+export default function App(props:any): JSX.Element {
   
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions = {{
-                        headerShown: true,  /* if changed to false disables header*/
-                        headerTitleStyle: {
-                          color: "white",
-                        },
-                        headerStyle: {
-                          backgroundColor: "#292929",                
-                        },
-                        }}  
-                        initialRouteName = "Starter">
-        <Stack.Screen name = "Starter"
-                      component = {Starter}
-                      options = { ({ route, navigation }) => ({     
-                        headerTitleAlign: 'center',
-                        headerTitleStyle: {
-                          color: "white",
-                        },
-                        headerStyle: {
-                          backgroundColor: "#292929",                
-                        },     
-                        headerRight: () => {
-                          return (
-                            <View style = {styles.headerBar}>
-
-                              <Pressable style = {styles.headerButton}
-                                        onPress = {() => navigation.navigate('Calendar')}>
-                                <Image style = {styles.headerButtonImage} source = {require('./src/assets/calendar.png')}/>   
-                              </Pressable>
-                              
-                              <Pressable style = {styles.headerButton}
-                                          onPress = {() => navigation.navigate('Profile')}>
-                                <Image style = {styles.headerButtonImage} source = {require('./src/assets/profile.png')}/>   
-                              </Pressable>
-
-                              <Pressable style = {styles.headerButton}
-                                          onPress = {() => navigation.navigate('Metrics')}>
-                                <Image style = {styles.headerButtonImage} source = {require('./src/assets/metrics.png')}/>   
-                              </Pressable>
-                              
-                            </View>
-                        )  
-                        },     
-                      })}
-
-                      />
-
+      <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{ 
+                        header:(props) => {return <Navigator {...props} />},
+                      }}
+        initialRouteName = "Starter"
+      >
+        <Stack.Screen name = "Starter" component = {Starter}/>
         <Stack.Screen name = "Profile" component = {Profile}/>
         <Stack.Screen name = "Calendar" component = {Calendar}/>
         <Stack.Screen name = "Metrics" component = {Metrics}/>
@@ -72,38 +71,3 @@ function App(): JSX.Element {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  
-  headerBar: {
-    flex: 0.75,
-    flexDirection: 'row',
-    borderWidth: 0,
-    borderColor: "red",
-    justifyContent: "flex-end",
-  },
-
-  headerButton: {
-    marginLeft: "5%",
-    marginBottom: "3%",
-  },
-  headerButtonImage: {
-    width: 30,
-    height: 30,
-  },
-});
-
-export default App;
