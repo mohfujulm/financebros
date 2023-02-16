@@ -18,13 +18,13 @@ function setupCalendar() {
   let firstDay = new Date(y, m, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
   let isfirst = false;
 
-  const days:JSX.Element[] = [];
-
+  const monthdays = [31, leapYearChange, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   const pastmonthlength = monthdays[m-1]
   const presmonthlength= monthdays[m];
 
   //iterate over items and add in the appropriate days
-
+  const days:JSX.Element[] = [];
+  
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
