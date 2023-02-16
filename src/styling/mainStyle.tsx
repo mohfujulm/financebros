@@ -1,18 +1,20 @@
-import React from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
+// import React from 'react';
+import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
+
 
 // const width = useWindowDimensions();
 
 const styles = StyleSheet.create({
     navContainer: {
-      marginTop: '5%',
+      // marginTop: '5%',
       padding: '2%',
+      paddingTop: ( Platform.OS === 'ios' ) ? '8%' : 0,
       flexDirection: 'row',
       width: 500, //Need to figure out how to make this an actual percentage
       // flex : 1,
       /* Apparently react native has this super cool feature where if you declare the first element
       flex box, it makes your header take up half the screen. Super cool dude! */
-      height: 80, //cannot use percentage heigt for some reason, as it adds an additional view container "I think".
+      height: 120, //cannot use percentage heigt for some reason, as it adds an additional view container "I think".
       alignItems: 'center',
       backgroundColor: 'grey',
     },
