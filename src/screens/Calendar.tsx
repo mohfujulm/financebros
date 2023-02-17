@@ -14,21 +14,23 @@ if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 !
 const monthdays = [31, leapYearChange, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 function setupCalendar() {
-  let date = new Date(), y = date.getFullYear(), m = date.getMonth();
-  let firstDay = new Date(y, m, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
+  let date = new Date(), year = date.getFullYear(), month = date.getMonth(), currentDay = date.getDate();
+  let firstDay = new Date(year, month, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
   let isfirst = false;
 
   const monthdays = [31, leapYearChange, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-  const pastmonthlength = monthdays[m-1]
-  const presmonthlength= monthdays[m];
+  const pastmonthlength = monthdays[month-1]
+  const presmonthlength= monthdays[month];
 
   //iterate over items and add in the appropriate days
   const days:JSX.Element[] = [];
+  let daysPast:number = 0;
 
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
       numday = (pastmonthlength)- (firstDay-i);
+      daysPast+=1;
     }
     if (i >= firstDay) { //if the day is within the month
       isfirst= true;
@@ -39,8 +41,10 @@ function setupCalendar() {
       numday = i-(firstDay+presmonthlength)+1;
     }
 
-    if (isfirst){
+    if (isfirst && numday != currentDay){
       days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.day]}><Text>{String(numday)}</Text></View>)
+    }else if(numday == currentDay){
+      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.currentDay]}><Text>{String(numday)}</Text></View>)
     }else{
       days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.empty]}><Text>{String(numday)}</Text></View>)
     }
@@ -117,6 +121,9 @@ const styles = StyleSheet.create({
   },
   empty: {
     backgroundColor: 'lightgreen',
+  },
+  currentDay : {
+    backgroundColor: 'white'
   },
   day: {
     backgroundColor: 'green',
