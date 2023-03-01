@@ -43,7 +43,7 @@ function setupCalendar() {
 
     if (isfirst && numday != currentDay){
       days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.day]}><Text>{String(numday)}</Text></View>)
-    }else if(numday == currentDay){
+    }else if(numday == currentDay && isfirst){
       days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.currentDay]}><Text>{String(numday)}</Text></View>)
     }else{
       days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.empty]}><Text>{String(numday)}</Text></View>)
