@@ -16,6 +16,7 @@ import CalendarDayDetails from "./src/screens/Calendar Day Details";
 import Metrics from "./src/screens/Metrics";
 import Profile from "./src/screens/Profile";
 import Aesthetics from "./src/screens/Aesthetics";
+import Welcome from "./src/screens/Welcome";
 
 function Navigator(){
 
@@ -60,9 +61,10 @@ export default function App(props:any): JSX.Element {
         screenOptions={{ 
                         header:(props) => {return <Navigator {...props} />},
                       }}
-        initialRouteName = "Starter"
+        initialRouteName = "Welcome"
       >
         <Stack.Screen name = "Starter" component = {Starter}/>
+        <Stack.Screen name = "Welcome" component = {Welcome}/>
         <Stack.Screen name = "Profile" component = {Profile}/>
         <Stack.Screen name = "Calendar" component = {Calendar}/>
         <Stack.Screen name = "Metrics" component = {Metrics}/>
