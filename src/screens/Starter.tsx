@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-native';
-import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator, TextInput} from 'react-native';
 import { firebase } from '../firebase.js';
-
 
 //https://reactnavigation.org/docs/typescript/
 //need to figure out TypeScript bullshit (still functional without it)
@@ -11,6 +10,8 @@ export default function Starter(): JSX.Element{
   const [users, setUsers] = useState([]); // Initial empty array of users
   const [loading, setLoading] = useState(true);
 
+  const [text, onChangeText] = React.useState('Useless Text');
+  const [number, onChangeNumber] = React.useState('');
   //sample data retrieval with firebase shown below:
   //accesses the firestore database, finds the collection named 'users', and pulls every document in the collection and stores it in the 'users' array as JSON
   useEffect(() => {
@@ -42,18 +43,30 @@ export default function Starter(): JSX.Element{
   return (
     <View>
       <View style={styles.MainContainer}>
-        
-        
+  
         <Text style = {styles.sectionTitle}>Information from first two entries of the Firestore database: </Text> 
 
-        <Text style = {styles.bodyText}>{'\n'} [ User: { users[0].username }, Pass: { users[0].password } ] </Text>
-        <Text style = {styles.bodyText}>{'\n'} [ User: { users[1].username }, Pass: { users[1].password } ] </Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeNumber}
+          value={number}
+          placeholder="useless placeholder"
+          keyboardType="numeric"
+        />
+
+        {/* <Text style = {styles.bodyText}>{'\n'} [ User: { users[0]["username"] }, Pass: { users[0]["password"] } ] </Text>
+        <Text style = {styles.bodyText}>{'\n'} [ User: { users[1]["username"] }, Pass: { users[1]["password"] } ] </Text> */}
+
 
         <Pressable onPress = {() => console.log(users)}
                     style = {styles.button}>
                     
                     <Text style = {styles.buttonText}>Press me to display contents of the 'users' collection from Firestore in the console</Text>
-
         </Pressable>
 
       </View>
@@ -94,6 +107,13 @@ const styles = StyleSheet.create({
     height: '7%',
     borderRadius: 4,
     elevation: 7
+  },
+
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 
 });
