@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-native';
 import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator, TextInput} from 'react-native';
-import { firebase } from '../firebase.js';
+import { firebase } from '../../firebase.js';
 
 //https://reactnavigation.org/docs/typescript/
 //need to figure out TypeScript bullshit (still functional without it)
@@ -18,7 +18,7 @@ export default function Starter(): JSX.Element{
     const subscriber = firebase.firestore()
       .collection('users')
       .onSnapshot(querySnapshot => {
-        const users = [];
+        const users:any = [];
   
         querySnapshot.forEach(documentSnapshot => {
           users.push({

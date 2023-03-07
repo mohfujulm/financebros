@@ -22,13 +22,11 @@ function setupCalendar() {
 
   //iterate over items and add in the appropriate days
   const days:JSX.Element[] = [];
-  let daysPast:number = 0;
 
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
-      numday = (pastmonthlength)- (firstDay-(i+1);
-      daysPast+=1;
+      numday = (pastmonthlength)- (firstDay-(i+1));
     }
     if (i >= firstDay) { //if the day is within the month
       isfirst= true;
