@@ -11,8 +11,6 @@ if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 !
   leapYearChange = 28;
 }
 
-const monthdays = [31, leapYearChange, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
 function setupCalendar() {
   let date = new Date(), year = date.getFullYear(), month = date.getMonth(), currentDay = date.getDate();
   let firstDay = new Date(year, month, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
@@ -29,7 +27,7 @@ function setupCalendar() {
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
-      numday = (pastmonthlength)- (firstDay-i);
+      numday = (pastmonthlength)- (firstDay-(i+1);
       daysPast+=1;
     }
     if (i >= firstDay) { //if the day is within the month
