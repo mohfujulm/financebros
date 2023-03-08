@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator, TextInput } from 'react-native';
-import { firebase } from '../src/firebase.js';
+import { firebase } from '../../firebase.js';
 
 
 
@@ -8,7 +8,6 @@ import { firebase } from '../src/firebase.js';
 export default function Welcome ():JSX.Element {
     //components
     function LoginScreen () :JSX.Element{
-    
     
         return(
             <View style={[styles.mainContainer, styles.flexCol]}>

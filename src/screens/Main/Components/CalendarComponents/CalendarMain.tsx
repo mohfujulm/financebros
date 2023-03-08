@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 
+import styles from '../../../../styling/CalendarStyle';
+
 const currentYear:number = new Date().getFullYear()
 
 let leapYearChange:number;
@@ -11,10 +13,6 @@ if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 !
   leapYearChange = 28;
 }
 
-<<<<<<< HEAD:src/screens/Calendar.tsx
-
-=======
->>>>>>> 15f9ffccd2192800576d923eb6d780dd63756c87:src/screens/Main/Calendar Components/Calendar.tsx
 function setupCalendar() {
   let date = new Date(), year = date.getFullYear(), month = date.getMonth(), currentDay = date.getDate();
   let firstDay = new Date(year, month, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
@@ -30,11 +28,9 @@ function setupCalendar() {
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
-      numday = (pastmonthlength)- (firstDay-(i+1));
-<<<<<<< HEAD:src/screens/Calendar.tsx
-      daysPast+=1;
-=======
->>>>>>> 15f9ffccd2192800576d923eb6d780dd63756c87:src/screens/Main/Calendar Components/Calendar.tsx
+      //total num days of the last month minus the day the first day will occur 
+      //and how many days we've iterated over (starts at 1)
+      numday = (pastmonthlength)- (firstDay-(i+1)); 
     }
     if (i >= firstDay) { //if the day is within the month
       isfirst= true;
@@ -46,11 +42,11 @@ function setupCalendar() {
     }
 
     if (isfirst && numday != currentDay){
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.day]}><Text>{String(numday)}</Text></View>)
+      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.day]}><Text style ={[styles.dayText, styles.dayNumber]}>{String(numday)}</Text></View>)
     }else if(numday == currentDay && isfirst){
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.currentDay]}><Text>{String(numday)}</Text></View>)
+      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(numday)}</Text></View>)
     }else{
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.empty]}><Text>{String(numday)}</Text></View>)
+      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.empty]}><Text style ={[styles.dayText, styles.emptyNumber]}>{String(numday)}</Text></View>)
     }
     
   }
@@ -59,7 +55,6 @@ function setupCalendar() {
 }
 
 function Calendar() : JSX.Element {
-    const dayElements = setupCalendar();
 
     return (
       <View style = {styles.sectionContainer}> 
@@ -73,71 +68,8 @@ function Calendar() : JSX.Element {
           <View style = {[styles.titleLabel,styles.flexCol]}><Text>S</Text></View>
         </View>
         <View style = {[styles.calendarContainer, styles.flexRow]}>
-          {dayElements}
+          {setupCalendar()}
         </View>
       </View>
     );
 }
-
-const styles = StyleSheet.create({
-  flexRow:{
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },flexCol:{
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-  },sectionContainer: {
-    width: '100%',
-    height: '100%',
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  calendarContainer: {
-    width: '100%',
-    height: '100%',
-  },
-  titleContainer: {
-    width: '100%',
-    height: '5%',
-    backgroundColor: 'lightgrey',
-  },
-  container: {
-    width: '14.13%',
-    height: '15%',
-    borderWidth: 1,
-    borderColor: 'black',
-  },
-  empty: {
-    backgroundColor: 'lightgreen',
-  },
-  currentDay : {
-    backgroundColor: 'white'
-  },
-  day: {
-    backgroundColor: 'green',
-  },
-  titleLabel: {
-    height: '100%',
-    width: '14.13%',
-    borderWidth: 1,
-    borderColor: 'black',
-  }
-});
-
-export default Calendar;
