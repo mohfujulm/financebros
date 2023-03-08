@@ -10,132 +10,168 @@ function Profile() {
     const [TransAccName, setTransAccName] = useState("");
 
     return (
-      <View style = {styles.transactionInputContainer}> 
-  
-        {/* This is a standard React Native component used to take user input on text.  The onChangeText 
-            simply sets the Transaction variable to the value of whatever is in the TextInput field in realtime.
-            
-            I use three of these fields here, so the user can input a transaction name, category, and amount*/}
-          
-            <View style = {styles.transactionSubcontainer}>
-              <TextInput style = {styles.ActionInputLarge}
-                        placeholder = "Transaction Name"
-                        placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransName(name)}
-              />
-            </View>
-        
-            <View style = {styles.transactionSubcontainer}>
-              <TextInput style = {styles.ActionInputSmall}
-                        placeholder = "Date"
-                        placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransDate(name)}
-              />
+      <View style = {styles.sectionContainer}> 
+
+        <Text style = {styles.title}> Transaction Details</Text>
+
+        <View style = {styles.transactionInputContainer}> 
+    
+          {/* This is a standard React Native component used to take user input on text.  The onChangeText 
+              simply sets the Transaction variable to the value of whatever is in the TextInput field in realtime.
               
-              <TextInput style = {styles.ActionInputSmall}
-                        placeholder = "Time"
-                        placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransTime(name)}
-              />
-            </View>
+              I use three of these fields here, so the user can input a transaction name, category, and amount*/}
+              <View style = {styles.entryBlock}>
+                <Text style = {styles.entryFieldTitle}> Vendor Name*:</Text>
+                <TextInput style = {styles.ActionInputLarge}
+                          //placeholder = "Transaction Name"
+                          //placeholderTextColor = "black"
+                          onChangeText = {(name) => setTransName(name)}
+                />    
+              </View>
 
-            <View style = {styles.transactionSubcontainer}>
-              <TextInput style = {styles.ActionInputSmall}
-                        placeholder = "Amount"
-                        placeholderTextColor = "black"
-                        keyboardType = "decimal-pad"
-                        onChangeText = {(name) => setTransAmount(name)}
-              />
-              
-              <TextInput style = {styles.ActionInputSmall}
-                        placeholder = "Category"
-                        placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransCategory(name)}
-              />
-            </View>
-
-            <View style = {styles.transactionSubcontainer}>
-              <TextInput style = {styles.ActionInputLarge}
-                        placeholder = "Account Name"
-                        placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransAccName(name)}
-              />
-            </View>
-      
-
+              <View style = {styles.entryBlock}>
             
+                <View style = {{flexDirection:'row'}}>
+                  <View style = {styles.entryBlockHalf}>
+                    <Text style = {styles.entryFieldTitle}> Amount*:</Text>
+                    <TextInput style = {styles.ActionInputSmallLeft}
+                            //placeholder = "Amount"
+                            //placeholderTextColor = "black"
+                            keyboardType = "decimal-pad"
+                            onChangeText = {(amount) => setTransAmount(amount)}
+                    />
+                  </View>
+                  
+                  <View style = {styles.entryBlockHalf}>
+                    <Text style = {styles.entryFieldTitle}> Date*:</Text>
+                    <TextInput style = {styles.ActionInputSmallRight}
+                            //placeholder = "Amount"
+                            //placeholderTextColor = "black"
+                            keyboardType = "decimal-pad"
+                            onChangeText = {(date) => setTransDate(date)}
+                    />
+                  </View>
+                </View>
+                
+              </View>
 
-        {/* <Pressable onPress = {() => console.log(TransName)}
-                    style = {styles.button}>
-                    
-                    <Text style = {styles.buttonText}>Press me to display contents of the transaction name variable</Text>
-        </Pressable>     */}
+              <View style = {styles.entryBlock}>
+                <Text style = {styles.entryFieldTitle}> Category:</Text>
+                <TextInput style = {styles.ActionInputLarge}
+                          //placeholder = "Transaction Name"
+                          //placeholderTextColor = "black"
+                          onChangeText = {(name) => setTransCategory(name)}
+                />    
+              </View>
 
+              <View style = {styles.entryBlock}>
+                <Text style = {styles.entryFieldTitle}> Account Name:</Text>
+                <TextInput style = {styles.ActionInputLarge}
+                          //placeholder = "Transaction Name"
+                          //placeholderTextColor = "black"
+                          onChangeText = {(name) => setTransAccName(name)}
+                />    
+              </View>      
+
+          {/* <Pressable onPress = {() => console.log(TransName)}
+                      style = {styles.button}>
+                      
+                      <Text style = {styles.buttonText}>Press me to display contents of the transaction name variable</Text>
+          </Pressable>     */}
+
+        </View>
       </View>
     );
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
+    flex: 1,
     paddingHorizontal: "2%",
-    // this is to help me visualize flex boxes because my little monkey brain can't comprehend how it works without clear visual indicators //
-    //borderWidth: 5,
-    //borderColor: 'green',
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    flex: 1,
-  },
-  // transactionWindow: {
-  //   marginTop: 50,
-  //   //justifyContent: "center",
-  //   // this is to help me visualize flex boxes because my little monkey brain can't comprehend how it works without clear visual indicators //
-  //   //borderWidth: 5,
-  //   //borderColor: 'red',
-  //   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // },
-  transactionInputContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    //justifyContent: "center",
-    // this is to help me visualize flex boxes because my little monkey brain can't comprehend how it works without clear visual indicators //
-    //borderWidth: 5,
-    //borderColor: 'red',
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  },
-  transactionSubcontainer: {
-    flex: 0.05,
-    flexDirection: 'row',
-    marginTop: "1%",
+    backgroundColor: 'lightgreen',
+    alignItems: "center",
     justifyContent: "center",
-    // this is to help me visualize flex boxes because my little monkey brain can't comprehend how it works without clear visual indicators //
-    //borderWidth: 5,
-    //borderColor: 'green',
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //borderWidth: 2,
+    //borderColor: 'red',
+  },
+
+  title: {
+    marginBottom: '2%',
+    fontSize: 25,
+    fontWeight: '700',
+  },
+
+  transactionInputContainer: {
+    flex: 0.6,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    width: '85%',
+    borderRadius: 15,
+    elevation: 3,
+    padding: '5%',
+    
+    //borderWidth: 2,
+    //borderColor: 'blue',
+  },
+
+  entryBlock: {
+    flex: 0.15,
+    marginBottom: '2%',
+    // borderWidth: 1,
+    // borderColor: 'red',
+  },
+  entryBlockHalf: {
+    flex: 0.5,
+    flexDirection: 'column',
+    // borderWidth: 1,
+    // borderColor: 'green',
+  },
+
+  entryFieldTitle: {
+    fontSize: 15,
+    fontWeight: '600',
   },
 
   ActionInputLarge: {
-    backgroundColor: "white",
-    borderRadius: 3,
-    width: "82%",
-    height: "100%",
+    backgroundColor: "lightgrey",
+    borderRadius: 15,
+    marginTop: '1%',
+    width: "100%",
+    height: "50%",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    elevation: 8,
-    padding:4,
+    elevation: 2,
+    //padding:4,
   },
 
-  ActionInputSmall: {
-    backgroundColor: "white",
-    borderRadius: 3,
-    width: "40%",
-    height: "100%",
-    marginLeft: "1%",
-    marginRight: "1%",
+  ActionInputSmallLeft: {
+    backgroundColor: "lightgrey",
+    borderRadius: 15,
+    marginTop: '1%',
+    marginRight: '1%',
+    width: "98%",
+    height: "55%",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row",
-    elevation: 8,
-    padding:4,
+    //flexDirection: "row",
+    elevation: 2,
+    //padding:4,
+  },
+
+  ActionInputSmallRight: {
+    backgroundColor: "lightgrey",
+    borderRadius: 15,
+    marginTop: '1%',
+    marginLeft: '1%',
+    width: "98%",
+    height: "55%",
+    alignItems: "center",
+    justifyContent: "center",
+    //flexDirection: "row",
+    elevation: 2,
+    //padding:4,
   },
 
   button: {
