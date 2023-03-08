@@ -9,46 +9,17 @@ import { useNavigation } from '@react-navigation/native';
 import styles from "./src/styling/mainStyle";
 
 //all screens are imported here
-import Starter from "./src/screens/Starter";
-import Calendar from "./src/screens/Calendar";
-import CalendarTransactionDetails from "./src/screens/Calendar Transaction Details";
-import CalendarDayDetails from "./src/screens/Calendar Day Details";
-import Metrics from "./src/screens/Metrics";
-import Profile from "./src/screens/Profile";
-import Aesthetics from "./src/screens/Aesthetics";
-import Welcome from "./src/screens/Welcome";
+import Starter from "./src/screens/Main/Starter";
+import Calendar from "./src/screens/Main/Calendar Components/Calendar";
+import CalendarTransactionDetails from "./src/screens/Main/Calendar Components/Calendar Transaction Details";
+import CalendarDayDetails from "./src/screens/Main/Calendar Components/Calendar Day Details";
+import Metrics from "./src/screens/Main/Metrics Components/Metrics";
+import Profile from "./src/screens/Main/Profile Components/Profile";
+import Aesthetics from "./src/screens/Main/Profile Components/Aesthetics";
+import Welcome from "./Welcome Components/Welcome";
+import Navigator from './src/screens/Main/Navigation Component/Navigation';
 
-function Navigator(){
 
-  const Navigation = useNavigation();
-  const currentScreenName = String(Navigation.getState().routes[Navigation.getState().index].name);
-  return (
-    <View style={styles.navContainer}> 
-      <View style={styles.TitleBar}>
-        <Text style={styles.iconStyle}> ||| </Text>
-        <Text style={styles.NavHeader}> {currentScreenName}</Text>
-      </View>
-
-      <View style = {styles.IconBar}>
-        <Pressable style = {styles.pressableButton}
-                  onPress = {() => Navigation.navigate('Profile')}>  
-                  <Text style = {styles.buttonText}> P </Text>  
-        </Pressable>
-
-        <Pressable style = {styles.pressableButton}
-                  onPress = {() => Navigation.navigate('Calendar')}>  
-                  <Text style = {styles.buttonText}> C </Text>  
-        </Pressable>
-
-        <Pressable style = {styles.pressableButton}
-                  onPress = {() => Navigation.navigate('Metrics')}>  
-                  <Text style = {styles.buttonText}> M </Text>  
-        </Pressable>
-      </View>
-      
-    </View>
-  );
-}
 
 
 export default function App(props:any): JSX.Element {
@@ -59,7 +30,7 @@ export default function App(props:any): JSX.Element {
       <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ 
-                        header:(props) => {return <Navigator {...props} />},
+                        header:() => {return <Navigator />},
                       }}
         initialRouteName = "Welcome"
       >
