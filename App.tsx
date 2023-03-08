@@ -6,19 +6,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
 //all styles imported here
-import styles from "./src/styling/mainStyle";
+import styles from "./src/styling/AppStyle";
 
 //all screens are imported here
-import Starter from "./src/screens/Main/Starter";
-import Calendar from "./src/screens/Main/Calendar Components/Calendar";
-import CalendarTransactionDetails from "./src/screens/Main/Calendar Components/Calendar Transaction Details";
-import CalendarDayDetails from "./src/screens/Main/Calendar Components/Calendar Day Details";
-import Metrics from "./src/screens/Main/Metrics Components/Metrics";
-import Profile from "./src/screens/Main/Profile Components/Profile";
-import Aesthetics from "./src/screens/Main/Profile Components/Aesthetics";
-import Welcome from "./Welcome Components/Welcome";
-import Navigator from './src/screens/Main/Navigation Component/Navigation';
-
+// import Starter from "./src/screens/Main/Starter";
+import Calendar from "./src/screens/Main/Components/Calendar";
+import CalendarTransactionDetails from "./src/screens/Main/Components/Calendar Components/CalendarTransactionDetails";
+import CalendarDayDetails from "./src/screens/Main/Components/Calendar Components/CalendarDayDetails";
+import Metrics from "./src/screens/Main/Components/Metrics";
+import Profile from "./src/screens/Main/Components/Profile";
+import Aesthetics from "./src/screens/Main/Components/Profile Components/Aesthetics";
+import Welcome from "./src/screens/Welcome Components/Welcome";
+import Navigator from './src/screens/Main/Navigation';
+import Main from "./src/screens/Main/Main"
 
 
 
@@ -30,16 +30,13 @@ export default function App(props:any): JSX.Element {
       <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ 
-                        header:() => {return <Navigator />},
+                        headerShown: false
+                        // header:() => {return <Navigator />},
                       }}
-        initialRouteName = "Welcome"
+        initialRouteName = "Main"
       >
-        <Stack.Screen name = "Starter" component = {Starter}/>
         <Stack.Screen name = "Welcome" component = {Welcome}/>
-        <Stack.Screen name = "Profile" component = {Profile}/>
-        <Stack.Screen name = "Calendar" component = {Calendar}/>
-        <Stack.Screen name = "Metrics" component = {Metrics}/>
-        <Stack.Screen name = "Aesthetics" component = {Aesthetics}/>
+        <Stack.Screen name = "Main" component = {Main}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
