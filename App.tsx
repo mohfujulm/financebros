@@ -9,15 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import styles from "./src/styling/AppStyle";
 
 //all screens are imported here
-// import Starter from "./src/screens/Main/Starter";
-import Calendar from "./src/screens/Main/Components/Calendar";
-import CalendarTransactionDetails from "./src/screens/Main/Components/Calendar Components/CalendarTransactionDetails";
-import CalendarDayDetails from "./src/screens/Main/Components/Calendar Components/CalendarDayDetails";
-import Metrics from "./src/screens/Main/Components/Metrics";
-import Profile from "./src/screens/Main/Components/Profile";
-import Aesthetics from "./src/screens/Main/Components/Profile Components/Aesthetics";
-import Welcome from "./src/screens/Welcome Components/Welcome";
-import Navigator from './src/screens/Main/Navigation';
+import Welcome from "./src/screens/WelcomeComponents/Welcome";
 import Main from "./src/screens/Main/Main"
 
 
