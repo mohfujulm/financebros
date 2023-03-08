@@ -16,7 +16,7 @@ import CalendarDayDetails from "./src/screens/Main/Calendar Components/Calendar 
 import Metrics from "./src/screens/Main/Metrics Components/Metrics";
 import Profile from "./src/screens/Main/Profile Components/Profile";
 import Aesthetics from "./src/screens/Main/Profile Components/Aesthetics";
-import Welcome from "./Welcome Components/Welcome";
+import Welcome from "./src/screens/Main/Welcome Components/Welcome";
 import Navigator from './src/screens/Main/Navigation Component/Navigation';
 
 

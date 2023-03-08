@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator, TextInput } from 'react-native';
-import { firebase } from '../src/firebase.js';
+import { firebase } from '../../../firebase.js';
 
 
 
