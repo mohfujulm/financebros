@@ -13,17 +13,6 @@ if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 !
   leapYearChange = 28;
 }
 
-<<<<<<< HEAD:src/screens/Main/Components/CalendarComponents/CalendarMain.tsx
-<<<<<<< HEAD:src/screens/Main/Components/Calendar Components/CalendarMain.tsx
-=======
-
->>>>>>> main:src/screens/Calendar.tsx
-=======
-<<<<<<< HEAD:src/screens/Calendar.tsx
-
-=======
->>>>>>> 15f9ffccd2192800576d923eb6d780dd63756c87:src/screens/Main/Calendar Components/Calendar.tsx
->>>>>>> main:src/screens/Main/Calendar Components/Calendar.tsx
 function setupCalendar() {
   let date = new Date(), year = date.getFullYear(), month = date.getMonth(), currentDay = date.getDate();
   let firstDay = new Date(year, month, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
@@ -39,21 +28,9 @@ function setupCalendar() {
   for (let i = 0; i < 42; i++){
     let numday = i; //assign start count number
     if (i< firstDay){ //if the day is in the previous month
-<<<<<<< HEAD:src/screens/Main/Components/Calendar Components/CalendarMain.tsx
       //total num days of the last month minus the day the first day will occur 
       //and how many days we've iterated over (starts at 1)
       numday = (pastmonthlength)- (firstDay-(i+1)); 
-=======
-      numday = (pastmonthlength)- (firstDay-(i+1));
-<<<<<<< HEAD:src/screens/Main/Components/CalendarComponents/CalendarMain.tsx
-      daysPast+=1;
->>>>>>> main:src/screens/Calendar.tsx
-=======
-<<<<<<< HEAD:src/screens/Calendar.tsx
-      daysPast+=1;
-=======
->>>>>>> 15f9ffccd2192800576d923eb6d780dd63756c87:src/screens/Main/Calendar Components/Calendar.tsx
->>>>>>> main:src/screens/Main/Calendar Components/Calendar.tsx
     }
     if (i >= firstDay) { //if the day is within the month
       isfirst= true;
