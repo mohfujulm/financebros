@@ -1,31 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function Metrics() {
+//components
+import MetricsMain from './MetricsComponents/MetricsMain'
+
+export default function Metrics() {
+    
+    const Stack = createNativeStackNavigator()
+
     return (
-      <View style = {styles.sectionContainer}> 
-        <Text> hello its me the Metrics </Text>
-      </View>
+      <Stack.Navigator
+        screenOptions={{ 
+                        headerShown: false
+                        // header:() => {return <Navigator />},
+                      }}
+        initialRouteName = "Main"
+      >
+        <Stack.Screen name = "MetricsMain" component = {MetricsMain}/>
+      </Stack.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default Metrics;
