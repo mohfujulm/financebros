@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F1F7ED',
     }, 
     sectionContainer : {
-        paddingLeft: '5%',
-        paddingRight: '5%',
+        paddingHorizontal: '5%',
         paddingTop: '6%',
         paddingBottom: '5%',
     },
