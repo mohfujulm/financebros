@@ -4,10 +4,12 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     sectionContainer: {
       flex: 1,
-      paddingHorizontal: "2%",
+      paddingHorizontal: '5%',
+      paddingTop: '15%',
+      paddingBottom: '5%',
+    },
+    mainBackground : {
       backgroundColor: '#F1F7ED',
-      alignItems: "center",
-      justifyContent: "center",
     },
   
     title: {
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
       flex: 0.6,
       flexDirection: 'column',
       backgroundColor: 'white',
-      width: '85%',
+      width: '100%',
       borderRadius: 15,
       elevation: 3,
       padding: '5%',
