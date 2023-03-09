@@ -3,21 +3,22 @@ import { StyleSheet, View, Text} from 'react-native';
 
 import styles from '../../../styling/CalendarStyle';
 
-const currentYear:number = new Date().getFullYear()
-
-let leapYearChange:number;
-
-if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 != 0)){
-  leapYearChange = 29;
-}else{
-  leapYearChange = 28;
-}
+const currentYear:number = new Date().getFullYear();
 
 function setupCalendar() {
   let date = new Date(), year = date.getFullYear(), month = date.getMonth(), currentDay = date.getDate();
   let firstDay = new Date(year, month, 1).getDay() //gets first date. - 0=Sunday, 6= Saturday
   let isfirst = false;
 
+  function accountLeapYear(year:number){
+    if (((year % 4 == 0) && (year % 100 != 0)) && (year % 400 != 0)){
+      return 29;
+    }else{
+      return 28;
+    }
+  }
+
+  const leapYearChange = accountLeapYear(currentYear);
   const monthdays = [31, leapYearChange, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   const pastmonthlength = monthdays[month-1]
   const presmonthlength= monthdays[month];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable, Image, Animated, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Image, Animated } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,17 +20,17 @@ export default function Navigator(){
         <View style = {styles.IconBar}>
           <Pressable style = {styles.pressableButton}
                       onPress = {() => Navigation.navigate('Calendar')}>  
-                      <Image source={require('../../assets/calendar.png')} style={styles.ImageStyle} />  
+                      <Image source={require('../../assets/images/calendar.png')} style={styles.ImageStyle} />  
             </Pressable>
 
             <Pressable style = {styles.pressableButton}
                       onPress = {() => Navigation.navigate('Profile')}>  
-                      <Image source={require('../../assets/profile.png')} style={styles.ImageStyle} />  
+                      <Image source={require('../../assets/images/profile.png')} style={styles.ImageStyle} />  
             </Pressable>
     
             <Pressable style = {styles.pressableButton}
                       onPress = {() => Navigation.navigate('Metrics')}>  
-                      <Image source={require('../../assets/metrics.png')} style={styles.ImageStyle}/>  
+                      <Image source={require('../../assets/images/metrics.png')} style={styles.ImageStyle}/>  
             </Pressable>
         </View>
         

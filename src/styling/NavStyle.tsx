@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
     },
     ImageStyle :{
+        border: 50,
         margin: 0,
         padding: 0,
         flex: 1,
