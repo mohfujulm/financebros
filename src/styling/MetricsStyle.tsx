@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    mainBackground : {
-        backgroundColor: '#F1F7ED',
+    backgroundStyle : {
+        backgroundColor: '#a4c3b2',
     }, 
     sectionContainer : {
         paddingHorizontal: '5%',
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         paddingBottom: '5%',
     },
     sectionHeader : {
-        fontSize: 30,
+        fontSize: 25,
     },
     graphComponent : {
         width: '100%',

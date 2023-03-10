@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     pressableButton: {
         width: '18%',
         borderRadius: 50,
-        padding: '5%',
+        padding: '2%',
         marginLeft: '2%',
         backgroundColor: "#373E40",
         height: '90%',
@@ -37,22 +37,16 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 10,
     },
-    iconStyle:{
-        color: "white",
-        fontSize: 15,
-    },
     NavHeader:{
         color: 'white',
         fontSize: 35,
     },
     ImageStyle :{
-        border: 50,
-        margin: 0,
-        padding: 0,
+        borderRadius: 50,
         flex: 1,
         width: null,
         height: null,
-        resizeMode: 'stretch',
+        resizeMode: 'contain',
     }
   });
   

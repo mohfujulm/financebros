@@ -28,8 +28,27 @@ const Mainstyles = StyleSheet.create({
   },
   flexRight : {
     alignItems: 'flex-end',
-  }
-  
+  },
+
+
+  //top back button style
+
+  topButton :{
+    top: '3%',
+    left: '3%',
+    margin: '5%',
+    width: '25%',
+    height: '20%',
+  },
+  topButtonStyle : {
+      border: 'black solid 1px',
+      backgroundColor: 'white',
+      borderRadius: 50,
+      height: '30%', //has to have a height or else fucks up.
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+    
   });
   
 

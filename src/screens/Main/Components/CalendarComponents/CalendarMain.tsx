@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text, Pressable} from 'react-native';
 
+import Mainstyles from '../../../../styling/AppStyle';
 import styles from '../../../../styling/CalendarStyle';
 
 const currentYear:number = new Date().getFullYear()
@@ -54,22 +55,29 @@ function setupCalendar() {
   
 }
 
-function Calendar() : JSX.Element {
+export default function CalendarMain({navigation}) : JSX.Element {
 
     return (
-      <View style = {styles.sectionContainer}> 
-        <View style= {[styles.titleContainer,styles.flexRow]}>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>S</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>M</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>T</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>W</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>T</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>F</Text></View>
-          <View style = {[styles.titleLabel,styles.flexCol]}><Text>S</Text></View>
+      <View style = {[styles.sectionContainer]}> 
+        <View style= {[styles.titleContainer,Mainstyles.flexRow]}>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>S</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>M</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>T</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>W</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>T</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>F</Text></View>
+          <View style = {[styles.titleLabel,Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}><Text style={[styles.titleText]}>S</Text></View>
         </View>
         <View style = {[styles.calendarContainer, styles.flexRow]}>
           {setupCalendar()}
         </View>
+        <View style = {[styles.footerContainer, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}}style = {[styles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+              <Text style={[styles.titleText]}>+</Text>
+            </Pressable>
+        </View>
+        
+          
       </View>
     );
 }
