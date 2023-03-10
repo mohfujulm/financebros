@@ -13,6 +13,7 @@ import Welcome from "./src/screens/WelcomeComponents/Welcome";
 import Main from "./src/screens/Main/Main"
 
 
+
 export default function App(props:any): JSX.Element {
   
   const Stack = createNativeStackNavigator();
