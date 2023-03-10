@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     },
     calendarContainer: {
       width: '100%',
-      height: '100%',
+      height: '87%',
     },
     container: {
-      width: '14.13%',
-      height: '15%',
+      width: '14.2857%',
+      height: '16.7%',
       borderWidth: 1,
       borderColor: 'black',
     },
@@ -72,6 +72,21 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "300",
         margin: 'auto',
+    },
+    footerContainer: {
+      width: '100%',
+      height: '8%',
+      // backgroundColor: '#cce3de',
+    },
+    addTransaction : {
+      width: 40,
+      backgroundColor: 'white',
+      height: 40,
+      bottom: 0,
+      borderTopRightRadius: 50,
+      borderTopLeftRadius: 50,
+      borderBottomLeftRadius: 50,
+      borderBottomRightRadius: 50,
     }
     
 

@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 //all styles imported here
 import styles from "./src/styling/AppStyle";
 
-//all screens are imported here
+//components imported here
 import Welcome from "./src/screens/WelcomeComponents/Welcome";
 import Main from "./src/screens/Main/Main"
 
