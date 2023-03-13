@@ -11,12 +11,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#F1F7ED',
     },
   
-    title: {
-      marginBottom: '2%',
-      fontSize: 25,
-      fontWeight: '700',
-    },
-  
     transactionInputContainer: {
       flex: 0.6,
       flexDirection: 'column',

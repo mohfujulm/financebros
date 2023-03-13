@@ -125,9 +125,9 @@ function SortContainer(){
 
 export default function MetricsMain() {
     return (
-      <View style = {[Mainstyles.pageContainer, styles.backgroundStyle]}> 
+      <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle]}> 
         <View style = {styles.sectionContainer}>
-          <Text style = {styles.sectionHeader}>Spending Summary:</Text>
+          <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>Spending Summary</Text>
         
           <LineGraph />
           <CircleGraph />

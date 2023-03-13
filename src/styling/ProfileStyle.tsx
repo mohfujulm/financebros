@@ -6,36 +6,32 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '8%',
       marginTop: '5%',
-      marginHorizontal: '8%',
-    },
-    headerText : {
-      fontSize: 30,
-      color: 'black'
-    },
-    backgroundStyle : {
-      backgroundColor: '#a4c3b2',
     },
     buttonContainer : {
       marginHorizontal: '5%',
-      width: '90%',
-      height: '80%',
+      width: '80%',
+      height: '60%',
       backgroundColor: '#cce3de',
       padding: '2%',
     },
     buttonStyle : {
-      width: '90%',
-      height: '15%',
+      width: '55%',
+      height: '10%',
       backgroundColor: 'white',
       marginBottom: '10%',
       borderRadius: 20,
     },
-    centerText : {
-      textAlign: 'center',
+    deleteContainer : {
+      marginTop: '20%',
+      width: '80%',
+      height: '20%',
     },
-    bottomButton: {
-      bottom: 0,
+    delButtonStyle : {
+      marginTop: '20%',
+      width: '50%',
       height: '10%',
-      backgroundColor: 'grey'
+      backgroundColor: 'white',
+      borderRadius: 20,
     },
     buttonText : {
       fontSize: 15,

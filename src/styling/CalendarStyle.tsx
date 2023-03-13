@@ -2,27 +2,9 @@ import { Platform, StyleSheet, Dimensions } from 'react-native';
 
 
 const styles = StyleSheet.create({
-    //Flex Styling
-    flexRow:{
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },flexCol:{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      textAlign: 'center',
-    }
     
-    ,sectionContainer: { //main Section
-      width: '100%',
-      height: '100%',
-      backgroundColor: '#485150', 
-    },
     sectionTitle: {
+      fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
       fontSize: 24,
       fontWeight: '600',
     },
@@ -36,41 +18,53 @@ const styles = StyleSheet.create({
     },
     calendarContainer: {
       width: '100%',
-      height: '87%',
+      height: ( Platform.OS === 'ios' ) ? '80%' : '85%',
     },
+
+
+    //calendar day styling
     container: {
       width: '14.2857%',
       height: '16.7%',
       borderWidth: 1,
-      borderColor: 'black',
+      borderColor: '#98C1AC',
     },
     empty: {
-      backgroundColor: '#243E36' ,
+      backgroundColor: '#9EDCBD' ,
     },
     currentDay : {
-      backgroundColor: '#F1F7ED',
+      backgroundColor: '#FBFFCF',
     },
     day: {
-      backgroundColor: '#7CA982',
+      backgroundColor: '#CAF5E0',
+    },
+    emptyNumber : {
+      color: '#032329',
+    },dayNumber : {
+      fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+      color: '#032329',
+    }, currentNumber : {
+      fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+      color: '#032329',
     },
     
 
     titleContainer: {
         height: '5%',
-        backgroundColor: '#CBD3C5',
+        backgroundColor: '#98C1AC',
       },  
     titleLabel: {
       height: '100%',
-      width: '14.13%',
-    //   borderWidth: 1,
-      borderColor: 'black',
+      width: '14.2857%',
+      // borderWidth: 1,
+      // borderColor: 'black',
       
     },titleText: {
         textAlignVertical: 'center',
         textAlign: 'center',
-        color: 'black',
+        color: 'white',
         fontSize: 20,
-        fontWeight: "300",
+        fontWeight: "400",
         margin: 'auto',
     },
     footerContainer: {
@@ -79,9 +73,10 @@ const styles = StyleSheet.create({
       // backgroundColor: '#cce3de',
     },
     addTransaction : {
-      width: 40,
-      backgroundColor: 'white',
-      height: 40,
+      width: ( Platform.OS === 'ios' ) ? 60 : 50,
+      backgroundColor: '#42A998',
+      marginTop: ( Platform.OS === 'ios' ) ? '8%' : '4%',
+      height: ( Platform.OS === 'ios' ) ? 60 : 50,
       bottom: 0,
       borderTopRightRadius: 50,
       borderTopLeftRadius: 50,
@@ -95,13 +90,13 @@ const styles = StyleSheet.create({
     , dayText : {
       margin: '10%',
       fontSize: 15,
-    },emptyNumber : {
-      color: '#E0EEC6',
-    },dayNumber : {
-      color: 'white',
-    }, currentNumber : {
-      color: 'black',
-    }
+    },buttonText: {
+      textAlignVertical: 'center',
+      textAlign: 'center',
+      color: '#C6F5E8',
+      fontSize: 20,
+      fontWeight: "400",
+  },
   });
   
 

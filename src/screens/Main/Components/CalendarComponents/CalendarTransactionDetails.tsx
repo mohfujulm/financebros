@@ -13,14 +13,14 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     const [TransAccName, setTransAccName] = useState("");
 
     return (
-      <View style = {Mainstyles.pageContainer}> 
-        <View style = {[styles.sectionContainer, styles.mainBackground]}>
+      <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle]}> 
+        <View style = {[styles.sectionContainer]}>
           <View style= {styles.topButton}>
-              <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.navigate('CalendarMain')}> 
+              <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.goBack()}> 
                   <Text>{'<-'}</Text> 
           </Pressable>
           </View>
-            <Text style = {styles.title}> Transaction Details</Text>
+            <Text style = {Mainstyles.headerText}> Transaction Details</Text>
 
             <View style = {[styles.transactionInputContainer, Mainstyles.border]}> 
         
