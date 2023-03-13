@@ -1,9 +1,6 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    backgroundStyle : {
-        backgroundColor: '#a4c3b2',
-    }, 
     sectionContainer : {
         paddingHorizontal: '5%',
         paddingTop: '6%',

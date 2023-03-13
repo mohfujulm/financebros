@@ -5,7 +5,12 @@ const Mainstyles = StyleSheet.create({
   pageContainer : {
     width: '100%',
     height: '100%',
-  }, border : {
+  },
+  backgroundStyle : {
+    backgroundColor: '#E4FAEF',
+    
+  },
+  border : {
     borderColor: '#485150',
     borderStyle: 'solid',
     borderWidth: 5,
@@ -13,6 +18,7 @@ const Mainstyles = StyleSheet.create({
   },
   flexRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   flexCol : {
     flexDirection: 'column',
@@ -47,6 +53,21 @@ const Mainstyles = StyleSheet.create({
       height: '30%', //has to have a height or else fucks up.
       justifyContent: 'center',
       alignItems: 'center',
+  },
+
+
+  //text color and size
+  headerText : {
+    fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+    fontSize: 30,
+    fontWeight: '500',
+    color: '#375357',
+  }, 
+  paragraphText : {
+
+  },
+  centerText : {
+    textAlign: 'center',
   },
     
   });

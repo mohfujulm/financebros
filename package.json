@@ -10,10 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo-google-fonts/dev": "^0.2.3",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
     "@types/react-native": "~0.70.6",
     "expo": "^47.0.13",
+    "expo-app-loading": "~2.1.1",
+    "expo-font": "~11.0.1",
     "firebase": "^9.17.1",
     "react": "18.1.0",
     "react-native": "0.70.5",
