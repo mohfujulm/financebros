@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable, ScrollView, KeyboardAvoidingView, Animated } from 'react-native';
 import { firebase } from '../../../../firebase.js';
+
+//styling
 import Mainstyles from '../../../../styling/AppStyle';
 import styles from '../../../../styling/TransactionStyle';
+
+
+
+import NetInfo from "@react-native-community/netinfo";
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -11,27 +17,45 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     const [TransDate, setTransDate] = useState("");
     const [TransCategory, setTransCategory] = useState("");
     const [TransAmount, setTransAmount] = useState("");
-    const [TransTime, setTransTime] = useState("");
+    // const [TransTime, setTransTime] = useState("");
     const [TransAccName, setTransAccName] = useState("");
+
+
 
     const add_Transaction = () => {
         console.log("Transaction addition attempt made");
-        firebase.firestore()
-                .collection("users")
-                .doc(TransName)
-                .set({
-                    name: TransName,
-                    date: TransDate,
-                    category: TransCategory,
-                    amount: TransAmount,
-                    account_name: TransAccName,
-                })
-                .then(() => {
-                    console.log("Document written");
-                })
-                .catch((error) => {
-                    console.log("Error: ", error);
-                });
+
+        //check network connection    
+            
+            const subScribe = NetInfo.addEventListener(state => {
+                console.log("Connection type", state.type);
+                console.log("Is connected?", state.isConnected);
+
+                if (state.isConnected){
+                    //if there is internet, try to connect.
+                    firebase.firestore()
+                    .collection("users")
+                    .doc(TransName)
+                    .set({
+                        name: TransName,
+                        date: TransDate,
+                        category: TransCategory,
+                        amount: TransAmount,
+                        account_name: TransAccName,
+                    })
+                    .then(() => {
+                        console.log("Document written");
+                    })
+                    .catch((error) => {
+                        console.log("Document was not written\nError: ", error);
+                    });
+                }else{
+                    console.log('Device is not connected to the internet')
+                }
+            });
+
+            // Subscribe
+            subScribe();
 
     };
 

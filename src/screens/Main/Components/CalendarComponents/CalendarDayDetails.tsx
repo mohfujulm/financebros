@@ -1,31 +1,81 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
+import { FlatList, Image, View, Text, Pressable, Animated } from 'react-native';
 
-function CalendarDayDetails() {
+
+import Mainstyles from '../../../../styling/AppStyle';
+import styles from '../../../../styling/TransactionListStyle';
+
+
+function Transaction (){
+  const navigation = useNavigation();
+  return(
+    // Time Text
+    <View style={styles.transactionPadding}>
+      <Text style={styles.timeStamp}>11:00am</Text>
+      <Pressable 
+        onPress={() => navigation.navigate('CalendarTransactionDetails')}
+        style={[styles.transactionContainer, Mainstyles.flexRow, Mainstyles.horizontalCenter,]}>
+        {/* Image Container */}
+        <View style={[styles.categoryImage, Mainstyles.verticalCenter]}>
+          <Image source={require('../../../../assets/images/profile.png')} style={styles.imageContainer} />
+              
+        </View>
+        {/* Title Container */}
+        <View style={[styles.titleContainer, Mainstyles.verticalCenter,]}>
+          <Text style={[styles.transactionTitle]}>MTA*LIRR ETIX Ticket</Text>
+        </View>
+        {/* Dollar Amount */}
+        <View style={[styles.amountContainer, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+          <Text>$243.18</Text>
+          
+        </View>
+        <View style = {[styles.viewTransBtn, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}>
+              <Text>{String('>')}</Text>
+        </View>
+      </Pressable>
+    
+    </View>
+  )
+}
+
+export default function CalendarDayDetails({navigation}) {
+    // console.log(navigation)
+
     return (
-      <View style = {styles.sectionContainer}> 
-        <Text> hello its me the calendar, but the popup page when you click on a specific day on the calendar </Text>
+      <View style = {[Mainstyles.backgroundStyle, Mainstyles.pageContainer]}> 
+        {/* Button */}
+        <View style= {styles.topButton}>
+          <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.goBack()}> 
+              <Text style={[styles.topButtonText]}>{'<-'}</Text> 
+          </Pressable>
+        </View>
+        {/* Header */}
+        <View style= {[styles.headerContainer, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
+          <Text style={[styles.sectionHeader]}>Transactions:</Text>
+          <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]} onPress={() => navigation.goBack()}> 
+              <Text>Sort - Time</Text> 
+          </Pressable>
+        </View>
+        
+        {/* Render flatlist here.*/}
+        <View style ={[Mainstyles.horizontalCenter]}>
+          
+        <Transaction/>
+          <Transaction/>
+          <Transaction/>
+          <Transaction/>
+          <Transaction/>
+          <Transaction/>
+        </View>
+        {/* </FlatList> */}
+        <View style = {[styles.footerContainer, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}}style = {[styles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+              <Text style={[styles.buttonText]}>+</Text>
+            </Pressable>
+        </View>
+        
       </View>
     );
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default CalendarDayDetails;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, Animated } from 'react-native';
+import { ScrollView, View, Text, Pressable, Animated, Dimensions } from 'react-native';
 
 import {
     LineChart,
@@ -15,108 +15,117 @@ import styles from '../../../../styling/MetricsStyle';
 
 
 
-function LineGraph() {
+function LineGraph(props:any){
+    const selectedSort = props.selectedSort
+    console.log(selectedSort)
+
     const data = {
         labels: ["January", "February", "March", "April", "May", "June"],
         datasets: [
           {
             data: [20, 45, 28, 80, 99, 43],
-            color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-            strokeWidth: 2 // optional
           }
-        ],
-        legend: ["Rainy Days"] // optional
+        ]
       };
       const chartConfig = {
-        backgroundGradientFrom: "#1E2923",
-        backgroundGradientFromOpacity: 0,
-        backgroundGradientTo: "#08130D",
-        backgroundGradientToOpacity: 0.5,
-        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-        strokeWidth: 2, // optional, default 3
-        barPercentage: 0.5,
-        useShadowColorFromDataset: false // optional
+        backgroundGradientFrom : '#CAF5E0',
+        backgroundGradientTo: '#CAF5E0',
+        color: (opacity = 300) => `rgba(72, 81, 80, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+        
       };
   return(
-    <View style={[styles.graphComponent, Mainstyles.border]}>
+    <View style={[styles.graphComponent, Mainstyles.border, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}>
+        <Text>Total Spending</Text>
         <LineChart
             data={data}
-            width={350}
-            height={220}
             chartConfig={chartConfig}
+            width={Dimensions.get("window").width*.84}
+            height={Dimensions.get("window").height*.268}
         />  
     
 </View>
     );
 }
 
-function CircleGraph(){
+function CircleGraph(props:any){
+  const selectedSort = props.selectedSort
+  console.log(selectedSort)
+
     const data = [
         {
-          name: "Seoul",
+          name: "Travel",
           population: 21500000,
-          color: "rgba(131, 167, 234, 1)",
+          color: "#58A4B0",
           legendFontColor: "#7F7F7F",
           legendFontSize: 15
         },
         {
-          name: "Toronto",
+          name: "Food",
           population: 2800000,
-          color: "#F00",
+          color: "#03B5AA",
           legendFontColor: "#7F7F7F",
           legendFontSize: 15
         },
         {
-          name: "Beijing",
+          name: "Rent",
           population: 527612,
-          color: "red",
+          color: "#037971",
           legendFontColor: "#7F7F7F",
           legendFontSize: 15
         },
         {
-          name: "New York",
+          name: "Gym",
           population: 8538000,
-          color: "#ffffff",
+          color: "#80ADA0",
           legendFontColor: "#7F7F7F",
           legendFontSize: 15
         },
         {
-          name: "Moscow",
+          name: "Shopping",
           population: 11920000,
-          color: "rgb(0, 0, 255)",
+          color: "#F1F0CC",
           legendFontColor: "#7F7F7F",
           legendFontSize: 15
-        }
+        },
       ];
       const chartConfig = {
-        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+        color: (opacity = 1) => `rgba(3, 35, 41, ${opacity})`,
       };
   return(
-    <View style={[styles.graphComponent, Mainstyles.border]}>
+    <View style={[styles.graphComponent, Mainstyles.border, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}>
+        <Text>Top 5 Spending Categories</Text>
         <PieChart
             data={data}
-            width={350}
-            height={220}
+            width={Dimensions.get("window").width*.80}
+            height={Dimensions.get("window").height*.268}
             chartConfig={chartConfig}
             accessor={"population"}
             backgroundColor={"transparent"}
             paddingLeft={"5"}
+            hasLegend={true}
             center={[10, 10]}
-            absolute
+            avoidFalseZero={true}
         />
     </View>
     );
 }
 
-function SortContainer(){
-  let [selected, changeSelected] = React.useState('Week')
-  
+function SortContainer(props:any){
+  const selectedSort = props.selectedSort
+  console.log(selectedSort)
   
   return(
-    <View style= {[styles.sortSection, Mainstyles.flexRight]}>
+    <View style= {[styles.sortSection, Mainstyles.horizontalCenter]}>
       <View style={[styles.sortBox, Mainstyles.flexRow, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
-        <Text style = {[styles.sortText]}>Sort By:</Text>
-        <Pressable style= {[styles.sortButton, Mainstyles.border,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[Mainstyles.textAlignCenter]}>{selected}</Text></Pressable>
+        {/* <Text style = {[styles.sortText]}>Sort By:</Text> */}
+        <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Daily</Text></Pressable>
+      
+        <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Weekly</Text></Pressable>
+
+        <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Monthly</Text></Pressable>
+      
+        <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Yearly</Text></Pressable>
       </View>
     </View>
     
@@ -124,16 +133,21 @@ function SortContainer(){
 }
 
 export default function MetricsMain() {
+  let [selected, changeSelected] = React.useState('Weekly')
     return (
       <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle]}> 
-        <View style = {styles.sectionContainer}>
-          <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>Spending Summary</Text>
-        
-          <LineGraph />
-          <CircleGraph />
-          <SortContainer />
-
-        </View>
+        <ScrollView style= {[Mainstyles.flex]} 
+                contentContainerStyle={[Mainstyles.horizontalCenter, styles.sectionContainer]}
+                alwaysBounceVertical={false}
+        >
+            <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>Week of 3/15</Text>
+              
+            <SortContainer selectedSort={selected}/>  
+                
+            <LineGraph selectedSort={selected}/>
+            <CircleGraph selectedSort={selected}/>
+            
+        </ScrollView>
       </View>
     );
 }

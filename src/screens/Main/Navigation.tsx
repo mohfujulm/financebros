@@ -46,15 +46,15 @@ export default function Navigator(){
                       onPress = {() => screenChange('Calendar')}>  
                       <Image source={require('../../assets/images/calendar.png')} style={styles.ImageStyle} />  
             </Pressable>
-
-            <Pressable style = {styles.pressableButton}
-                      onPress = {() => screenChange('Profile')}>  
-                      <Image source={require('../../assets/images/profile.png')} style={styles.ImageStyle} />  
-            </Pressable>
     
             <Pressable style = {styles.pressableButton}
                       onPress = {() => screenChange('Metrics')}>  
                       <Image source={require('../../assets/images/metrics.png')} style={styles.ImageStyle}/>  
+            </Pressable>
+
+            <Pressable style = {styles.pressableButton}
+                      onPress = {() => screenChange('Profile')}>  
+                      <Image source={require('../../assets/images/profile.png')} style={styles.ImageStyle} />  
             </Pressable>
         </View>
         
