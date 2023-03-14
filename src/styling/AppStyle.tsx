@@ -1,10 +1,14 @@
 // import React from 'react';
-import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
+import { StatusBar, Platform, StyleSheet, useWindowDimensions } from 'react-native';
 
 const Mainstyles = StyleSheet.create({
   pageContainer : {
     width: '100%',
     height: '100%',
+    
+  },
+  scrollContainer : {
+    paddingTop: StatusBar.currentHeight,
   },
   backgroundStyle : {
     backgroundColor: '#E4FAEF',
@@ -14,6 +18,9 @@ const Mainstyles = StyleSheet.create({
     borderColor: '#485150',
     borderStyle: 'solid',
     borderWidth: 5,
+    borderRadius: 30,
+  },
+  borderRadius : {
     borderRadius: 30,
   },
   flexRow: {
@@ -34,6 +41,8 @@ const Mainstyles = StyleSheet.create({
   },
   flexRight : {
     alignItems: 'flex-end',
+  },flex : {
+    flex: 1,
   },
 
 

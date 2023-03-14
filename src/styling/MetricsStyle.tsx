@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const styles = StyleSheet.create({
     sectionContainer : {
@@ -6,31 +6,42 @@ const styles = StyleSheet.create({
         paddingTop: '6%',
         paddingBottom: '5%',
     },
-    sectionHeader : {
-        fontSize: 25,
-    },
+
     graphComponent : {
-        width: '100%',
-        height: '40%',
-        marginTop: '6%',
-        backgroundColor: 'white',
+        width: Dimensions.get('window').width*.88,
+        height: 300,
+        marginBottom: 20,
+        marginHorizontal: '6%',
+        backgroundColor: '#CAF5E0',
+    },graphHeader : {
+        fontSize: 20,
     },
+
 
     sortSection : {
         width: '100%',
-        height: '9%',
+        height: 80,
     },
     sortBox : {
-        width: '50%',
+        width: '89%',
         marginTop: '4%',
-    },sortButton : {
+    },
+    sortButton : {
         marginLeft: 10,
-        width: '50%',
-        height: '100%',
-        backgroundColor: 'white',
-    }, sortText : {
-        fontSize: 20,
+        width: '15%',
+        height: 22,
+        backgroundColor: '#42A998',
+    }, 
+    sortText : {
+        color: 'black',
         fontWeight: '400',
+        fontSize: 14,
+    },
+    buttonText: {
+        fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+        color: 'white',
+        fontSize: 11,
+
     }
   });
 

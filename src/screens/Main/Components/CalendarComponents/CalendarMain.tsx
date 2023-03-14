@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Pressable} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Mainstyles from '../../../../styling/AppStyle';
 import styles from '../../../../styling/CalendarStyle';
@@ -40,17 +41,19 @@ function setupCalendar() {
       isfirst= true;
       numday = i-firstDay+1;
     }
-    if(i > (firstDay+(presmonthlength)-1)){ //if ths day is after the last month
+    if(i > (firstDay+(presmonthlength)-1)){ //if the day is after the last month
       isfirst = false;
       numday = i-(firstDay+presmonthlength)+1;
     }
 
+    const navigation = useNavigation();
+
     if (isfirst && numday != currentDay){
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.day]}><Text style ={[styles.dayText, styles.dayNumber]}>{String(numday)}</Text></View>)
+      days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(month-1) + ', Day:' + String(i)} style= {[styles.container, styles.day]}><Text style ={[styles.dayText, styles.dayNumber]}>{String(numday)}</Text></Pressable>)
     }else if(numday == currentDay && isfirst){
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(numday)}</Text></View>)
+      days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(month) + ', Day:' + String(i)} style= {[styles.container, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(numday)}</Text></Pressable>)
     }else{
-      days.push( <View key={'Day' + String(i)} style= {[styles.container, styles.empty]}><Text style ={[styles.dayText, styles.emptyNumber]}>{String(numday)}</Text></View>)
+      days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(month+1) + ', Day:' + String(i)} style= {[styles.container, styles.empty]}><Text style ={[styles.dayText, styles.emptyNumber]}>{String(numday)}</Text></Pressable>)
     }
     
   }
