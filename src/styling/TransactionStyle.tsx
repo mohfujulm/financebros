@@ -4,8 +4,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     sectionContainer: {
       flex: 1,
-      paddingHorizontal: '5%',
-      paddingBottom: '5%',
+      height: "100%",
+      width: "100%",
+      padding: '5%',
+      borderWidth: 2,
+      borderColor: 'red',
     },
     mainBackground : {
       backgroundColor: '#F1F7ED',
@@ -16,16 +19,14 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       backgroundColor: 'white',
       width: '100%',
-      borderRadius: 15,
+      height: '100%',
+      borderRadius: 10,
       elevation: 3,
       padding: '5%',
-      
-      //borderWidth: 2,
-      //borderColor: 'blue',
     },
   
     entryBlock: {
-      flex: 0.15,
+      flex: 0.18,
       marginBottom: '2%',
       // borderWidth: 1,
       // borderColor: 'red',
@@ -41,10 +42,35 @@ const styles = StyleSheet.create({
       fontSize: 15,
       fontWeight: '600',
     },
+
+    entryButtonBlock: {
+      flex: 0.18,
+      marginBottom: '2%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // borderWidth: 1,
+      // borderColor: 'red',
+    },
+
+    entryButton: {
+      borderRadius: 5,
+      elevation: 5,
+      marginTop: '3%',
+      backgroundColor: '#CAF5E0',
+      alignItems: 'center',
+      height: '60%',
+      width: '50%',
+    },
+
+    entryButtonText: {
+      fontSize: 15,
+      fontWeight: '600',
+      marginTop: '3%',
+    },
   
     ActionInputLarge: {
       backgroundColor: "lightgrey",
-      borderRadius: 15,
+      borderRadius: 10,
       marginTop: '1%',
       width: "100%",
       height: "50%",
@@ -57,7 +83,7 @@ const styles = StyleSheet.create({
   
     ActionInputSmallLeft: {
       backgroundColor: "lightgrey",
-      borderRadius: 15,
+      borderRadius: 10,
       marginTop: '1%',
       marginRight: '1%',
       width: "98%",
@@ -71,7 +97,7 @@ const styles = StyleSheet.create({
   
     ActionInputSmallRight: {
       backgroundColor: "lightgrey",
-      borderRadius: 15,
+      borderRadius: 10,
       marginTop: '1%',
       marginLeft: '1%',
       width: "98%",

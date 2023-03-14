@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, TextInput, Pressable, Animated } from 'react-native';
-
+import { StyleSheet, View, Text, TextInput, Pressable, ScrollView, KeyboardAvoidingView, Animated } from 'react-native';
+import { firebase } from '../../../../firebase.js';
 import Mainstyles from '../../../../styling/AppStyle';
 import styles from '../../../../styling/TransactionStyle';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function CalendarTransactionDetails({navigation},selectedDate:any) {
     const [TransName, setTransName] = useState("");
@@ -12,14 +14,37 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     const [TransTime, setTransTime] = useState("");
     const [TransAccName, setTransAccName] = useState("");
 
+    const add_Transaction = () => {
+        console.log("Transaction addition attempt made");
+        firebase.firestore()
+                .collection("users")
+                .doc(TransName)
+                .set({
+                    name: TransName,
+                    date: TransDate,
+                    category: TransCategory,
+                    amount: TransAmount,
+                    account_name: TransAccName,
+                })
+                .then(() => {
+                    console.log("Document written");
+                })
+                .catch((error) => {
+                    console.log("Error: ", error);
+                });
+
+    };
+
     return (
       <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle]}> 
         <View style = {[styles.sectionContainer]}>
-          <View style= {styles.topButton}>
-              <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.goBack()}> 
-                  <Text>{'<-'}</Text> 
-          </Pressable>
-          </View>
+
+            <View style= {styles.topButton}>
+                <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.goBack()}> 
+                    <Text>{'<-'}</Text> 
+                </Pressable>
+            </View>
+
             <Text style = {Mainstyles.headerText}> Transaction Details</Text>
 
             <View style = {[styles.transactionInputContainer, Mainstyles.border]}> 
@@ -40,25 +65,25 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                 <View style = {styles.entryBlock}>
                 
                     <View style = {{flexDirection:'row'}}>
-                    <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Amount*:</Text>
-                        <TextInput style = {styles.ActionInputSmallLeft}
-                                //placeholder = "Amount"
-                                //placeholderTextColor = "black"
-                                keyboardType = "decimal-pad"
-                                onChangeText = {(amount) => setTransAmount(amount)}
-                        />
-                    </View>
-                    
-                    <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Date*:</Text>
-                        <TextInput style = {styles.ActionInputSmallRight}
-                                //placeholder = "Amount"
-                                //placeholderTextColor = "black"
-                                keyboardType = "decimal-pad"
-                                onChangeText = {(date) => setTransDate(date)}
-                        />
-                    </View>
+                        <View style = {styles.entryBlockHalf}>
+                            <Text style = {styles.entryFieldTitle}> Amount*:</Text>
+                            <TextInput style = {styles.ActionInputSmallLeft}
+                                    //placeholder = "Amount"
+                                    //placeholderTextColor = "black"
+                                    keyboardType = "decimal-pad"
+                                    onChangeText = {(amount) => setTransAmount(amount)}
+                            />
+                        </View>
+                        
+                        <View style = {styles.entryBlockHalf}>
+                            <Text style = {styles.entryFieldTitle}> Date*:</Text>
+                            <TextInput style = {styles.ActionInputSmallRight}
+                                    //placeholder = "Amount"
+                                    //placeholderTextColor = "black"
+                                    keyboardType = "decimal-pad"
+                                    onChangeText = {(date) => setTransDate(date)}
+                            />
+                        </View>
                     </View>
                     
                 </View>
@@ -70,7 +95,7 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                             //placeholderTextColor = "black"
                             onChangeText = {(name) => setTransCategory(name)}
                     />    
-                </View>
+                </View>   
 
                 <View style = {styles.entryBlock}>
                     <Text style = {styles.entryFieldTitle}> Account Name:</Text>
@@ -79,7 +104,14 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                             //placeholderTextColor = "black"
                             onChangeText = {(name) => setTransAccName(name)}
                     />    
-                </View>      
+                </View>     
+
+                <View style = {styles.entryButtonBlock}>
+                    <Pressable style = {styles.entryButton}
+                                onPress = {add_Transaction}>
+                        <Text style = {styles.entryButtonText}> Save Transaction</Text>
+                    </Pressable>
+                </View>
 
           {/* <Pressable onPress = {() => console.log(TransName)}
                       style = {styles.button}>
