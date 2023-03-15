@@ -45,9 +45,9 @@ export default function CalendarDayDetails({navigation}) {
     return (
       <View style = {[Mainstyles.backgroundStyle, Mainstyles.pageContainer]}> 
         {/* Button */}
-        <View style= {styles.topButton}>
-          <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.goBack()}> 
-              <Text style={[styles.topButtonText]}>{'<-'}</Text> 
+        <View style= {Mainstyles.topButton}>
+          <Pressable style = {[Mainstyles.topButtonStyle]} onPress={() => navigation.goBack()}> 
+              <Text style={[Mainstyles.topButtonText]}>{'<-'}</Text> 
           </Pressable>
         </View>
         {/* Header */}

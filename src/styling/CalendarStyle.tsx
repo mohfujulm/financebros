@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     calendarContainer: {
       width: '100%',
-      height: ( Platform.OS === 'ios' ) ? '80%' : '85%',
+      height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.8 : Dimensions.get('window').height*.75,
     },
 
 
