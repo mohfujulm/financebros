@@ -98,7 +98,6 @@ const styles  =  StyleSheet.create({
         height: '10%',
     },
     topButtonStyle : {
-        border: 'black solid 1px',
         backgroundColor: 'white',
         borderRadius: 50,
         height: '40%',
