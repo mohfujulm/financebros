@@ -32,8 +32,9 @@ const styles = StyleSheet.create({
 
     //MainContainer Styles
     infoContainer : {
-      width: '100%',
+      width: '95%',
       height: '15%',
+      marginHorizontal: '2.5%',
     },
     infoHeader : {
       width: '100%',
@@ -111,7 +112,6 @@ const styles = StyleSheet.create({
       fontSize: 15,
       fontWeight: '600',
     },
-
     entryButtonBlock: {
       height: 60,
       marginBottom: '2%',
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
       // borderWidth: 1,
       // borderColor: 'blue',
     },
-
     entryButton: {
       borderRadius: 5,
       elevation: 5,
@@ -130,7 +129,6 @@ const styles = StyleSheet.create({
       height: '60%',
       width: '50%',
     },
-
     entryButtonText: {
       fontSize: 15,
       fontWeight: '600',

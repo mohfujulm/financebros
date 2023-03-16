@@ -146,7 +146,7 @@ function EditContainer() : JSX.Element {
         
         {/* Vendor Name */}
             <View style = {[styles.entryBlock]}>
-                <Text style = {[styles.entryFieldTitle]}> Vendor Name*:</Text>
+                <Text style = {[styles.entryFieldTitle]}> Vendor Name<Text style={[styles.redText]}>*</Text>:</Text>
                 <TextInput style = {[styles.ActionInputLarge]}
                         //placeholder = "Transaction Name"
                         //placeholderTextColor = "black"
@@ -158,7 +158,7 @@ function EditContainer() : JSX.Element {
             
                 <View style = {[Mainstyles.flexRow]}>
                     <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Amount*:</Text>
+                        <Text style = {styles.entryFieldTitle}> Amount<Text style={[styles.redText]}>*</Text>:</Text>
                         <TextInput style = {styles.ActionInputSmall}
                                 //placeholder = "Amount"
                                 //placeholderTextColor = "black"
@@ -168,7 +168,7 @@ function EditContainer() : JSX.Element {
                     </View>
                     
                     <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Date*:</Text>
+                        <Text style = {styles.entryFieldTitle}> Date<Text style={[styles.redText]}>*</Text>:</Text>
                         <TextInput style = {styles.ActionInputSmall}
                                 //placeholder = "Amount"
                                 //placeholderTextColor = "black"
@@ -219,7 +219,7 @@ function EditContainer() : JSX.Element {
 
 export default function CalendarTransactionDetails({navigation},selectedDate:any) {
     
-    const [editTrans, seteditTrans] = useState(true)
+    const [editTrans, seteditTrans] = useState(false)
     const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
     
 
