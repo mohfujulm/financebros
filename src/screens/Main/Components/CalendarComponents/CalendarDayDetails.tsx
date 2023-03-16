@@ -61,12 +61,13 @@ export default function CalendarDayDetails({navigation}) {
         {/* Render flatlist here.*/}
         <View style ={[Mainstyles.horizontalCenter]}>
           
-        <Transaction/>
           <Transaction/>
           <Transaction/>
           <Transaction/>
           <Transaction/>
           <Transaction/>
+          <Transaction/>
+          
         </View>
         {/* </FlatList> */}
         <View style = {[styles.footerContainer, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>

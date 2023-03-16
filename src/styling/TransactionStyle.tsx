@@ -12,9 +12,13 @@ const styles = StyleSheet.create({
     },
   
     //Main Container
+    mainContainer : {
+      width: '100%',
+      height: Dimensions.get('window').height*.8,
+    },
     transactionContainer : {
       width: '100%',
-      height: Dimensions.get('window').height*.75,
+      height: '80%',
     },
     transactionInputContainer: {
       backgroundColor: 'white',
@@ -29,34 +33,38 @@ const styles = StyleSheet.create({
     //MainContainer Styles
     infoContainer : {
       width: '100%',
-      height: 150,
+      height: '15%',
     },
     infoHeader : {
       width: '100%',
-      height: 70,
+      height: '100%',
       // borderColor: 'light grey',
+      // borderWidth: 1,
     },
-    bottomHeader : {
-      height: 90,
+    amountHeader : {
+      height: '15%',
+      padding: '5%',
       // borderColor: 'black',
       // borderWidth: 1,
     },
     leftinfoContainer : {
       width: '50%',
-      
     },
     rightinfoContainer : {
       width: '50%',
     },
     categoryContainer : {
-      marginTop: '5%',
-      padding: '5%',
+      padding: '10%',
       height: 250,
+      backgroundColor: '#9EDCBD',
     },
     percentContainer : {
       width: '100%',
-      height: '33%',
-    },travelStyle : {
+      height: '33.3%',
+      marginVertical: '3%',
+      // backgroundColor: 'lightgrey'
+    },
+    travelStyle : {
       marginTop: '40%',
     },
 
@@ -76,9 +84,12 @@ const styles = StyleSheet.create({
     circleBox : {
       borderRadius: 50,
       backgroundColor: 'white',
-      height: '60%',
+      height: '100%',
       width: '18%',
-      marginRight: '40%',
+    },
+    percentText: {
+      width: '82%',
+      height: '80%',
     },
 
 

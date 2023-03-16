@@ -41,7 +41,7 @@ function LineGraph(props:any){
             data={data}
             chartConfig={chartConfig}
             width={Dimensions.get("window").width*.84}
-            height={Dimensions.get("window").height*.268}
+            height={Dimensions.get("window").height*.24}
         />  
     
 </View>
@@ -116,8 +116,7 @@ function SortContainer(props:any){
   console.log(selectedSort)
   
   return(
-    <View style= {[styles.sortSection, Mainstyles.horizontalCenter]}>
-      <View style={[styles.sortBox, Mainstyles.flexRow, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+    <View style= {[styles.sortSection, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
         {/* <Text style = {[styles.sortText]}>Sort By:</Text> */}
         <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Daily</Text></Pressable>
       
@@ -126,7 +125,7 @@ function SortContainer(props:any){
         <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Monthly</Text></Pressable>
       
         <Pressable style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Yearly</Text></Pressable>
-      </View>
+      
     </View>
     
   );
@@ -140,13 +139,15 @@ export default function MetricsMain() {
                 contentContainerStyle={[Mainstyles.horizontalCenter, styles.sectionContainer]}
                 alwaysBounceVertical={false}
         >
+          <View style={[styles.header, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
             <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>Week of 3/15</Text>
-              
-            <SortContainer selectedSort={selected}/>  
                 
+            <SortContainer selectedSort={selected}/>  
+          </View>
+          <View style={[styles.graphContainer]}>
             <LineGraph selectedSort={selected}/>
             <CircleGraph selectedSort={selected}/>
-            
+          </View>
         </ScrollView>
       </View>
     );
