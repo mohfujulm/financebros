@@ -19,41 +19,62 @@ interface ItemProps { //for dealing with child components that need a usestate p
 }
 
 
-function MainContainer() : JSX.Element{
+function MainContainer(props:object) : JSX.Element{
+    //take data and render it here.
+
+    //then return it inside of the element.
+
     return(
-        <>
-            <View style = {[styles.transactionInputContainer, Mainstyles.flexCol, Mainstyles.border]}> 
+        <View style={[styles.mainContainer,Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+            <View style = {[styles.transactionInputContainer, Mainstyles.border]}> 
                 <View style= {[styles.infoContainer, Mainstyles.flexRow]}>
                     <View style={[styles.leftinfoContainer, Mainstyles.flexCol]}>
                         <View style={[styles.infoHeader, Mainstyles.flexLeft, Mainstyles.verticalCenter]}> 
                             <Text>MTA*NYCT PAYGO</Text>
                             <Text>Chase Credit Card</Text>
                         </View>
-                        <View style={[styles.bottomHeader, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>                        
-                            <Text style={[Mainstyles.headerText]}>$3,000</Text>
-                        </View>
                     </View>
                     <View style={[styles.rightinfoContainer, Mainstyles.flexCol]}>
                         <View style={[styles.infoHeader, Mainstyles.flexRight, Mainstyles.verticalCenter]}> 
                             <Text style={[Mainstyles.headerText]}>3/15</Text>
-                        </View>
-                        <View style={[styles.bottomHeader, Mainstyles.flexRight]}>
-                            <Text style={[styles.travelStyle, Mainstyles.paragraphText]}>Category: Travel</Text>
-                        </View>
+                            </View>
                     </View>
                 </View>
-                <View style={[styles.categoryContainer,Mainstyles.borderRadius, Mainstyles.backgroundStyle,Mainstyles.flexCol]}>
-                    <View style={[styles.percentContainer, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
-                        <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>34%</Text></View>
-                        <Text>Daily Spend</Text>
+
+                <View style={[styles.amountHeader]}>   
+                    <View style={[Mainstyles.flexRow, Mainstyles.horizontalCenter, Mainstyles.flexSpaceBetween]}>
+                        <Text style={[ Mainstyles.paragraphText]}>Category: Travel</Text>
+                                             
+                        <Text style={[Mainstyles.headerText]}>$3,000</Text>
+                                         
                     </View>
-                    <View style={[styles.percentContainer, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
-                        <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>14%</Text></View>
-                        <Text>Weekly Spend</Text>
+                </View>
+
+                <View style={[styles.categoryContainer, Mainstyles.borderRadius, Mainstyles.flexCol, Mainstyles.verticalCenter]}>
+                    
+                    <View style={[styles.percentContainer, Mainstyles.verticalCenter]}>
+                        <View style={[ Mainstyles.flexRow, Mainstyles.horizontalCenter]}>    
+                            <View style={[styles.percentText, Mainstyles.flexLeft, Mainstyles.verticalCenter]}>
+                                <Text>Daily Spend</Text>
+                            </View>
+                            <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>34%</Text></View>
+                        </View>
                     </View>
-                    <View style={[styles.percentContainer, Mainstyles.flexRow]}>
-                        <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>18%</Text></View>
-                        <Text>Yearly Spend</Text>
+                    <View style={[styles.percentContainer, Mainstyles.verticalCenter]}>
+                        <View style={[ Mainstyles.flexRow]}>
+                            <View style={[styles.percentText, Mainstyles.flexLeft, Mainstyles.verticalCenter]}>
+                                <Text>Weekly Spend</Text>
+                            </View>
+                            <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>14%</Text></View>
+                        </View>
+                    </View>
+                    <View style={[styles.percentContainer, Mainstyles.verticalCenter]}>
+                        <View style={[ Mainstyles.flexRow]}>
+                            <View style={[styles.percentText, Mainstyles.flexLeft, Mainstyles.verticalCenter]}>
+                                <Text>Yearly Spend</Text>
+                            </View>
+                            <View style={[styles.circleBox, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}><Text>18%</Text></View>
+                        </View>
                     </View>
                 </View>
                 
@@ -62,7 +83,7 @@ function MainContainer() : JSX.Element{
                 <Text style={[Mainstyles.centerText, styles.buttonText]}>Edit Transaction</Text>
             </Pressable>
             
-        </>
+        </View>
     );
 }
 
@@ -198,7 +219,7 @@ function EditContainer() : JSX.Element {
 
 export default function CalendarTransactionDetails({navigation},selectedDate:any) {
     
-    const [editTrans, seteditTrans] = useState(false)
+    const [editTrans, seteditTrans] = useState(true)
     const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
     
 

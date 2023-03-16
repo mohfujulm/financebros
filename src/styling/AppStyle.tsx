@@ -47,7 +47,9 @@ const Mainstyles = StyleSheet.create({
   flexRight : {
     alignItems: 'flex-end',
   },
-  
+  flexSpaceBetween : {
+    justifyContent: 'space-between'
+  },
   flex : {
     flex: 1,
   },

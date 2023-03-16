@@ -21,8 +21,10 @@ const styles  =  StyleSheet.create({
         // backgroundColor: 'white',
     },
     sectionHeader: {
+        width: '60%',
         fontSize: 30,
-    },sortButton: {
+    },
+    sortButton: {
         marginLeft: '10%',
         width: '30%',
         height: '40%',
