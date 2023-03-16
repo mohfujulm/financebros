@@ -134,92 +134,92 @@ function EditContainer() : JSX.Element {
     };
     return(
         /* Main Content Container */
-        <>
-        <Text style = {[Mainstyles.headerText,Mainstyles.centerText]}> Transaction Details</Text>
+        <View style={[styles.mainContainer,Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+            <Text style = {[Mainstyles.headerText,Mainstyles.centerText]}> Transaction Details</Text>
 
-        <View style = {[styles.transactionInputContainer, Mainstyles.flexCol, Mainstyles.border]}> 
+            <View style = {[styles.transactionInputContainer, Mainstyles.flexCol, Mainstyles.border]}> 
 
-        {/* This is a standard React Native component used to take user input on text.  The onChangeText 
-            simply sets the Transaction variable to the value of whatever is in the TextInput field in realtime.
+            {/* This is a standard React Native component used to take user input on text.  The onChangeText 
+                simply sets the Transaction variable to the value of whatever is in the TextInput field in realtime.
+                
+                I use three of these fields here, so the user can input a transaction name, category, and amount*/}
             
-            I use three of these fields here, so the user can input a transaction name, category, and amount*/}
-        
-        {/* Vendor Name */}
-            <View style = {[styles.entryBlock]}>
-                <Text style = {[styles.entryFieldTitle]}> Vendor Name<Text style={[styles.redText]}>*</Text>:</Text>
-                <TextInput style = {[styles.ActionInputLarge]}
-                        //placeholder = "Transaction Name"
-                        //placeholderTextColor = "black"
-                        onChangeText = {(name) => setTransaction({...transaction, 'name': name})}
-                />    
-            </View>
-        {/* Amount + Date */}
-            <View style = {styles.entryBlock}>
-            
-                <View style = {[Mainstyles.flexRow]}>
-                    <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Amount<Text style={[styles.redText]}>*</Text>:</Text>
-                        <TextInput style = {styles.ActionInputSmall}
-                                //placeholder = "Amount"
-                                //placeholderTextColor = "black"
-                                keyboardType = "decimal-pad"
-                                onChangeText = {(amount) => setTransaction({...transaction, 'amount': amount})}
-                        />
+            {/* Vendor Name */}
+                <View style = {[styles.entryBlock]}>
+                    <Text style = {[styles.entryFieldTitle]}> Vendor Name<Text style={[styles.redText]}>*</Text>:</Text>
+                    <TextInput style = {[styles.ActionInputLarge]}
+                            //placeholder = "Transaction Name"
+                            //placeholderTextColor = "black"
+                            onChangeText = {(name) => setTransaction({...transaction, 'name': name})}
+                    />    
+                </View>
+            {/* Amount + Date */}
+                <View style = {styles.entryBlock}>
+                
+                    <View style = {[Mainstyles.flexRow]}>
+                        <View style = {styles.entryBlockHalf}>
+                            <Text style = {styles.entryFieldTitle}> Amount<Text style={[styles.redText]}>*</Text>:</Text>
+                            <TextInput style = {styles.ActionInputSmall}
+                                    //placeholder = "Amount"
+                                    //placeholderTextColor = "black"
+                                    keyboardType = "decimal-pad"
+                                    onChangeText = {(amount) => setTransaction({...transaction, 'amount': amount})}
+                            />
+                        </View>
+                        
+                        <View style = {styles.entryBlockHalf}>
+                            <Text style = {styles.entryFieldTitle}> Date<Text style={[styles.redText]}>*</Text>:</Text>
+                            <TextInput style = {styles.ActionInputSmall}
+                                    //placeholder = "Amount"
+                                    //placeholderTextColor = "black"
+                                    keyboardType = "decimal-pad"
+                                    onChangeText = {(date) => setTransaction({...transaction, 'date': date})}
+                            />
+                        </View>
                     </View>
                     
-                    <View style = {styles.entryBlockHalf}>
-                        <Text style = {styles.entryFieldTitle}> Date<Text style={[styles.redText]}>*</Text>:</Text>
-                        <TextInput style = {styles.ActionInputSmall}
-                                //placeholder = "Amount"
-                                //placeholderTextColor = "black"
-                                keyboardType = "decimal-pad"
-                                onChangeText = {(date) => setTransaction({...transaction, 'date': date})}
-                        />
-                    </View>
                 </View>
-                
-            </View>
-        {/* Category */}
-            <View style = {styles.entryBlock}>
-                <Text style = {styles.entryFieldTitle}> Category:</Text>
-                <TextInput style = {styles.ActionInputLarge}
-                        //placeholder = "Transaction Name"
-                        //placeholderTextColor = "black"
-                        onChangeText = {(category) => setTransaction({...transaction, 'category': category})}
-                />    
-            </View>   
-        {/* Account Name */}
-            <View style = {styles.entryBlock}>
-                <Text style = {styles.entryFieldTitle}> Account Name:</Text>
-                <TextInput style = {styles.ActionInputLarge}
-                        //placeholder = "Transaction Name"
-                        //placeholderTextColor = "black"
-                        onChangeText = {(accountName) => setTransaction({...transaction, 'accountName': accountName})}
-                />    
-            </View>     
-        {/* Button */}
-            <View style = {styles.entryButtonBlock}>
-                <Pressable style = {[styles.entryButton,Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}
-                            onPress = {add_Transaction}>
-                    <Text style = {styles.entryButtonText}> Save Transaction</Text>
-                </Pressable>
-            </View>
+            {/* Category */}
+                <View style = {styles.entryBlock}>
+                    <Text style = {styles.entryFieldTitle}> Category:</Text>
+                    <TextInput style = {styles.ActionInputLarge}
+                            //placeholder = "Transaction Name"
+                            //placeholderTextColor = "black"
+                            onChangeText = {(category) => setTransaction({...transaction, 'category': category})}
+                    />    
+                </View>   
+            {/* Account Name */}
+                <View style = {styles.entryBlock}>
+                    <Text style = {styles.entryFieldTitle}> Account Name:</Text>
+                    <TextInput style = {styles.ActionInputLarge}
+                            //placeholder = "Transaction Name"
+                            //placeholderTextColor = "black"
+                            onChangeText = {(accountName) => setTransaction({...transaction, 'accountName': accountName})}
+                    />    
+                </View>     
+            {/* Button */}
+                <View style = {styles.entryButtonBlock}>
+                    <Pressable style = {[styles.entryButton,Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}
+                                onPress = {add_Transaction}>
+                        <Text style = {styles.entryButtonText}> Save Transaction</Text>
+                    </Pressable>
+                </View>
 
-        {/* <Pressable onPress = {() => console.log(transaction)}
-                style = {styles.button}>
-                
-                <Text style = {styles.buttonText}>Press me to display contents of the transaction name variable</Text>
-        </Pressable>     */}
+            {/* <Pressable onPress = {() => console.log(transaction)}
+                    style = {styles.button}>
+                    
+                    <Text style = {styles.buttonText}>Press me to display contents of the transaction name variable</Text>
+            </Pressable>     */}
 
-        </View>
-    </>
+            </View>
+    </View>
     );
 }
 
 
 export default function CalendarTransactionDetails({navigation},selectedDate:any) {
     
-    const [editTrans, seteditTrans] = useState(false)
+    const [editTrans, seteditTrans] = useState(true)
     const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
     
 

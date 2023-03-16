@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     transactionContainer : {
       width: '100%',
-      height: '80%',
+      height: '100%',
     },
     transactionInputContainer: {
       backgroundColor: 'white',
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
       // borderWidth: 1,
       // borderColor: 'green',
     },
-  
     entryFieldTitle: {
       fontSize: 15,
       fontWeight: '600',
@@ -134,7 +133,6 @@ const styles = StyleSheet.create({
       fontWeight: '600',
       marginTop: '3%',
     },
-  
     ActionInputLarge: {
       backgroundColor: "lightgrey",
       borderRadius: 10,
@@ -147,7 +145,6 @@ const styles = StyleSheet.create({
       elevation: 2,
       padding: 10,
     },
-  
     ActionInputSmall: {
       backgroundColor: "lightgrey",
       borderRadius: 10,
@@ -162,7 +159,6 @@ const styles = StyleSheet.create({
       padding: 10,
       //padding:4,
     },
-
     redText: {
       color: 'red',
     },
