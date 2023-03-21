@@ -24,7 +24,7 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
     //if edit trans == false, then display editcontainer, else display maincontainer
 
-    const add_Transaction = () => {
+    const changeTrans = () => {
     
             seteditTrans(!editTrans);
         
@@ -92,7 +92,7 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                 </View>
     
                 <Pressable style={[styles.buttonStyle,Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}
-                           onPress = {() => seteditTrans(!editTrans)}>
+                           onPress = {() => changeTrans()}>
                     <Text style={[Mainstyles.centerText, styles.buttonText]}>Edit Transaction</Text>
                 </Pressable>
                 
@@ -112,13 +112,20 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
         const add_Transaction = () => {
             console.log("Transaction addition attempt made");
     
-            //check network connection    
+
+            //check required fields
+
+                function checkReqs (name : string, date: string, amount: string) {
+                    return (transaction.name === '' || transaction.date === '' || transaction.amount === '')
+                }
+
+            //check network connection  
                 const checkNetwork = NetInfo.addEventListener(state => {
-                    console.log("Connection type", state.type);
-                    console.log("Is connected?", state.isConnected);
     
-                    if (state.isConnected){
-                        //if there is internet, try to connect.
+                    if (state.isConnected){ //check connection, if internet then connect
+
+                        if (checkReqs(transaction.name, transaction.date, transaction.amount)) return null;
+
                         firebase.firestore()
                         .collection("users")
                         .doc(transaction.name)
@@ -130,10 +137,13 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                             account_name: transaction.accountName,
                         })
                         .then(() => {
-                            console.log("Document written");
+                            console.log("Document written");  
+                            changeTrans();
                         })
                         .catch((error) => {
                             console.log("Document was not written\nError: ", error);
+                            //change styles of document.
+
                         });
                     }else{
                         console.log('Device is not connected to the internet')
@@ -142,7 +152,6 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     
                 // Subscribe
                 checkNetwork();
-                seteditTrans(true);
     
         };
         return(

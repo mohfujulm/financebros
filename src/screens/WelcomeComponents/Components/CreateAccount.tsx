@@ -1,30 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, Animated, ActivityIndicator, TextInput } from 'react-native';
+import { ScrollView, View, Text, Pressable, Animated, TextInput } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { firebase } from '../../../firebase.js';
 
-
+import Mainstyles from '../../../styling/AppStyle';
 import styles from '../../../styling/WelcomeStyle';
 
 
 export default function AccountScreen ({navigation}): JSX.Element {
     return(
-        <View style={[styles.mainContainer]}>
-            <View style= {styles.topButton}>
-            <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.navigate('Login')}> 
-                <Text>Back</Text> 
-            </Pressable>
-            </View>
-            
-            <View style={[styles.contextField, styles.flexCol]}>
+        <SafeAreaView style={[Mainstyles.flex]}>
+            <View style={[Mainstyles.pageContainer, Mainstyles.backgroundStyle, Mainstyles.horizontalCenter]}>
                 
-                    <TextInput style= {[styles.textInputStyle, styles.emailStyle]} placeholder="Email: " placeholderTextColor="#000"/>
-                    <TextInput style= {[styles.textInputStyle, styles.passwordStyle]} placeholder="Password: " placeholderTextColor="#000"/>
-                    <TextInput style= {[styles.textInputStyle, styles.passwordStyle]} placeholder="Confirm Password: " placeholderTextColor="#000"/>
-                <Pressable style = {styles.buttonStyle} > 
-                    <Text>Create Account</Text>
-                </Pressable>
-            </View>
+                <View style= {styles.topButton}>
+                    <Pressable style = {[styles.topButtonStyle]} onPress={() => navigation.navigate('Login')}> 
+                        <Text>{'<-'}</Text> 
+                    </Pressable>
+                </View>
             
-        </ View>
+                <ScrollView
+                    contentContainerStyle={[styles.mainContainer, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}
+                    alwaysBounceVertical={true}
+                    >
+                    <TextInput style= {[styles.textInputStyle]} placeholder="Email: " placeholderTextColor="#000"/>
+                    <TextInput style= {[styles.textInputStyle]} placeholder="Password: " placeholderTextColor="#000"/>
+                    <TextInput style= {[styles.textInputStyle]} placeholder="Confirm Password: " placeholderTextColor="#000"/>
+                    <Pressable style = {styles.buttonStyle} > 
+                        <Text style={[styles.buttonText]}>Create Account</Text>
+                    </Pressable>
+
+                </ScrollView>
+                
+        
+            
+            </ View>
+        </SafeAreaView>
     );
 }
