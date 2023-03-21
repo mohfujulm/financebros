@@ -41,19 +41,21 @@ const styles = StyleSheet.create({
     },
     emptyNumber : {
       color: '#032329',
-    },dayNumber : {
+    },
+    dayNumber : {
       fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
       color: '#032329',
-    }, currentNumber : {
+    }, 
+    currentNumber : {
       fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
       color: '#032329',
     },
     
 
     titleContainer: {
-        height: '5%',
-        backgroundColor: '#98C1AC',
-      },  
+      height: '5%',
+      backgroundColor: '#98C1AC',
+    },  
     titleLabel: {
       height: '100%',
       width: '14.2857%',
@@ -61,37 +63,41 @@ const styles = StyleSheet.create({
       // borderColor: 'black',
       
     },titleText: {
-        textAlignVertical: 'center',
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 20,
-        fontWeight: "400",
-        margin: 'auto',
+      textAlignVertical: 'center',
+      textAlign: 'center',
+      color: 'white',
+      fontSize: 20,
+      fontWeight: "400",
+      margin: 'auto',
     },
+
+
+
     footerContainer: {
+      position: 'absolute',
+      bottom: '13.42%',
       width: '100%',
-      height: '8%',
+      height: '10%',
       // backgroundColor: '#cce3de',
     },
     addTransaction : {
       width: ( Platform.OS === 'ios' ) ? 60 : 50,
       backgroundColor: '#42A998',
-      marginTop: ( Platform.OS === 'ios' ) ? '8%' : '4%',
       height: ( Platform.OS === 'ios' ) ? 60 : 50,
-      bottom: 0,
       borderTopRightRadius: 50,
       borderTopLeftRadius: 50,
       borderBottomLeftRadius: 50,
       borderBottomRightRadius: 50,
-    }
+    },
     
 
     
     //Text Styling
-    , dayText : {
+    dayText : {
       margin: '10%',
       fontSize: 15,
-    },buttonText: {
+    },
+    buttonText: {
       textAlignVertical: 'center',
       textAlign: 'center',
       color: '#C6F5E8',

@@ -1,18 +1,19 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
 
 
 const styles = StyleSheet.create({
+
     mainContainer:{
         // position: 'absolute',
-        height: '100%',
-        backgroundColor: '#485150',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height*.70,
     },
     welcomeContainer:{
         width: '100%',
         height: '15%',
         borderBottomLeftRadius: 100,
         borderBottomRightRadius: 100,
-        backgroundColor: '#F1F7ED',
+        backgroundColor: '#CAF5E0',
     },
     welcomeText : {
         color: '#485150',
@@ -28,17 +29,18 @@ const styles = StyleSheet.create({
 
 
     buttonStyle: {
-        backgroundColor: '#7CA982',
+        backgroundColor: '#42A998',
         margin: 10,
-        width: '30%',
-        height: '10%',
+        width: '34%',
+        height: '6%',
         borderRadius: 50,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 0,
+        padding: '2%',
 
-    },buttonText :{
+    },
+    buttonText :{
         color: '#F1F7ED',
     },
 
@@ -54,12 +56,6 @@ const styles = StyleSheet.create({
         width: '60%',
     },
     
-    flexCol :{
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    
     contentContainer : {
         width: '100%',
         height: '85%',
@@ -69,23 +65,31 @@ const styles = StyleSheet.create({
         top: '3%',
         left: '3%',
         margin: '5%',
-        width: '25%',
-        height: '20%',
+        width: '100%',
+        height: '5%',
     },
     topButtonStyle : {
         border: 'black solid 1px',
         backgroundColor: 'white',
         borderRadius: 50,
-        height: '30%', //has to have a height or else fucks up.
+        width: '20%',
+        height: '100%', //has to have a height or else fucks up.
         justifyContent: 'center',
         alignItems: 'center',
+        color: 'white',
+    },
+
+
+    footerContainer: {
+        width: '100%',
+        height: '5%',
+        bottom: '15%',
     },
     bottomButton : {
-        bottom: '-10%',
-        alignContent: 'center',
         width: '40%',
-        height: '6%',
-    },bottombuttonText : {
+        height: '100%',
+    },
+    bottombuttonText : {
         fontSize: 20,
     }
     

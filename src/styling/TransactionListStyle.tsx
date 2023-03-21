@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from "react-native"
+import { StyleSheet, Platform, Dimensions } from "react-native"
 
 
 
@@ -31,22 +31,26 @@ const styles  =  StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 40,
     },
+    mainContainer : {
+        width: '100%',
+        height: Dimensions.get('window').height,
+    },
 
     //transaction styling
     transactionPadding: {
-        width: '83%',
-        height: 80,
-        marginBottom: 10,
+        width: '95%',
+        height: Dimensions.get('window').height*.1,
+        marginBottom: '4%',
     },
     transactionContainer: {
         width: '100%',
-        height: 60,
+        height: '70%',
         borderWidth: 1,
         borderRadius: 20,
         backgroundColor: 'white',
     },
-    //inner Transaction Styles
 
+    //inner Transaction Styles
     categoryImage : {
         margin: 'auto',
         marginLeft: '2%',
@@ -79,9 +83,8 @@ const styles  =  StyleSheet.create({
         width: '3%',
         height: '100%',
         // backgroundColor: 'lightgrey',
-    }
-    
-    ,amountContainer : {
+    },
+    amountContainer : {
         width: '30%',
         height: '100%',
         // backgroundColor: 'grey',
@@ -111,31 +114,29 @@ const styles  =  StyleSheet.create({
     //bottom button styles
     footerContainer: {
         position: 'absolute',
-        bottom: 10,
+        bottom: '13.42%',
         width: '100%',
-        height: '8%',
+        height: '10%',
         // backgroundColor: '#cce3de',
       },
-      addTransaction : {
+    addTransaction : {
         width: ( Platform.OS === 'ios' ) ? 60 : 50,
         backgroundColor: '#42A998',
-        marginTop: ( Platform.OS === 'ios' ) ? '8%' : '4%',
         height: ( Platform.OS === 'ios' ) ? 60 : 50,
-        bottom: 0,
         borderTopRightRadius: 50,
         borderTopLeftRadius: 50,
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,
-      },
-      
-  
-      
-      //Text Styling
-      dayText : {
+    },
+    
+
+    
+    //Text Styling
+    dayText : {
         margin: '10%',
         fontSize: 15,
-      },
-      buttonText: {
+    },
+        buttonText: {
         textAlignVertical: 'center',
         textAlign: 'center',
         color: '#C6F5E8',
