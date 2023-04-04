@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: '#98C1AC',
     },
-    dayOne: {
-      backgroundColor: '#9EDCBD' ,
-    },
+    // day: {
+    //   backgroundColor: '#9EDCBD' ,
+    // },
     currentDay : {
       backgroundColor: '#FBFFCF',
     },
-    dayTwo: {
+    day: {
       backgroundColor: '#CAF5E0',
     },
     dayTwoNumber : {

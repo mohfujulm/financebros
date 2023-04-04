@@ -61,12 +61,10 @@ function setupCalendar(year: any) {
       const navigation = useNavigation();
       
       if (d < monthdays[m]+1){
-        if (m % 2 == 0){ //every other month change the style
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.dayOne]}><Text style ={[styles.dayText, styles.dayOneNumber]}>{String(d)}</Text></Pressable>)
-        }else if(d == currentDay && m == currentMonth){ //if its the current month and day, seperate style.
+        if(d == currentDay && m == currentMonth){ //if its the current month and day, seperate style.
           days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(d)}</Text></Pressable>)
         }else{
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.dayTwo]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
+          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.day]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
         }
       }else{
         days.push( <View key={'Month:' + monthNames[m] + ', Placeholder:' + String(d)} style= {[styler]}></View>)
