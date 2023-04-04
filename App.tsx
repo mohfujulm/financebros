@@ -13,7 +13,6 @@ import {
 
 
 //all styles imported here
-import styles from "./src/styling/AppStyle";
 
 //components imported here
 import Welcome from "./src/screens/WelcomeComponents/Welcome";
@@ -31,7 +30,7 @@ export default function App(props:any): JSX.Element {
                         headerShown: false
                         // header:() => {return <Navigator />},
                       }}
-        initialRouteName = "Welcome"
+        initialRouteName = "Main"
       >
         <Stack.Screen name = "Welcome" component = {Welcome}/>
         <Stack.Screen name = "Main" component = {Main}/>

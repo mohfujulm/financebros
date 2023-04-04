@@ -17,32 +17,65 @@ const styles = StyleSheet.create({
       fontWeight: '700',
     },
     calendarContainer: {
+      width: Dimensions.get('window').width,
+      height: '100%',
+      paddingBottom : Dimensions.get('window').height*.14
+    },
+    monthContainer: {
       width: '100%',
-      height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.8 : Dimensions.get('window').height*.75,
-      maxHeight: 600,
+      height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.8 : Dimensions.get('window').height*.7,
+      // maxHeight: 600,
+      
     },
 
 
     //calendar day styling
-    container: {
+    monthTitle: {
+      width: '100%', 
+      marginHorizontal: '6%',
+      height: 100, 
+    },
+    monthText: {
+      fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+      color: '#032329',
+      fontSize: 25,
+    },
+    dayContainer: {
+      width: '100%', 
+      height: '100%',
+    },
+    containerOne: {
       width: '14.2857%',
       height: '16.7%',
       borderWidth: 1,
       borderColor: '#98C1AC',
     },
-    empty: {
+    containerTwo: {
+      width: '14.2857%',
+      height: '20%',
+      borderWidth: 1,
+      borderColor: '#98C1AC',
+    },
+    containerThree: {
+      width: '14.2857%',
+      height: '25%',
+      borderWidth: 1,
+      borderColor: '#98C1AC',
+    },
+    dayOne: {
       backgroundColor: '#9EDCBD' ,
     },
     currentDay : {
       backgroundColor: '#FBFFCF',
     },
-    day: {
+    dayTwo: {
       backgroundColor: '#CAF5E0',
     },
-    emptyNumber : {
+    dayTwoNumber : {
+      fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
       color: '#032329',
     },
-    dayNumber : {
+    dayOneNumber : {
       fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
       color: '#032329',
     }, 

@@ -38,6 +38,10 @@ const Mainstyles = StyleSheet.create({
   verticalCenter : {
     justifyContent: 'center',
   },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   textAlignCenter : {
     textAlign: 'center',
   },
