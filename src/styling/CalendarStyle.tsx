@@ -32,13 +32,14 @@ const styles = StyleSheet.create({
     //calendar day styling
     monthTitle: {
       width: '100%', 
-      marginHorizontal: '6%',
+      marginHorizontal: '5%',
       height: 100, 
     },
     monthText: {
       fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
-      color: '#032329',
-      fontSize: 25,
+      color: '#375357',
+      fontSize: 30,
+      // marginTop: '10%',
     },
     dayContainer: {
       width: '100%', 
