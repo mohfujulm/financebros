@@ -203,34 +203,40 @@ function Transaction (props: ItemProps){
 export default function CalendarDayDetails({navigation}) {
     // console.log(navigation)
 
-    const ListFooter = () =>  {
+    const ListFooter = ():JSX.Element =>  {
       return(
-        <View style={[]}>
-
+        <View>
+          <View style={[styles.transactionPadding]}>
+            {/* <View style={[styles.transactionContainer]}></View> */}
+          </View>
+          <View style={[styles.transactionPadding]}>
+            {/* <View style={[styles.transactionContainer]}></View> */}
+          </View>
         </View>
+        
       )
     }
 
     return (
       <View style = {[Mainstyles.backgroundStyle, Mainstyles.pageContainer]}> 
         
-        {/* Button */}
-        <View style= {Mainstyles.topButton}>
-          <Pressable style = {[Mainstyles.topButtonStyle]} onPress={() => navigation.goBack()}> 
-              <Text style={[Mainstyles.topButtonText]}>{'<-'}</Text> 
+        {/* Header  */}
+        <View style= {[Mainstyles.topHeader, Mainstyles.flexRow, Mainstyles.center]}>
+          <Pressable style = {[Mainstyles.topButtonStyle]} onPress = {() => navigation.goBack()}> 
+              <Text style = {[Mainstyles.topButtonText]}>{'<-'}</Text> 
           </Pressable>
+          <View style = {[styles.titlebar, Mainstyles.flexCol, Mainstyles.flexRight, Mainstyles.verticalCenter]}>
+            <Text style = {[styles.sectionHeader, styles.titleText]}>Transactions:</Text>
+            <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]} onPress={() => navigation.goBack()}> 
+                <Text>Sort - Time</Text> 
+            </Pressable>
+          </View>
+          
         </View>
 
-        {/* Header */}
-        <View style= {[styles.headerContainer, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
-          <Text style={[styles.sectionHeader]}>Transactions:</Text>
-          <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]} onPress={() => navigation.goBack()}> 
-              <Text>Sort - Time</Text> 
-          </Pressable>
-        </View>
         
         {/* Render flatlist here.*/}
-        <View style ={[Mainstyles.flex]}>
+        <View style ={[Mainstyles.flex, styles.mainContainer]}>
           
           <FlatList 
             data= {userData}
@@ -238,16 +244,16 @@ export default function CalendarDayDetails({navigation}) {
             keyExtractor={item => item.id}
             contentContainerStyle={[Mainstyles.horizontalCenter, {flexGrow: 1} ]}
             ListFooterComponent= {<ListFooter />}
-            style={[styles.mainContainer]}
+            // style={[styles.mainContainer]}
           />
           
         </View>
 
         {/* Button */}
-        <View style = {[styles.footerContainer, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
-          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}}style = {[styles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
-              <Text style={[styles.buttonText]}>+</Text>
-            </Pressable>
+        <View style = {[Mainstyles.footerContainer, Mainstyles.flexCol, Mainstyles.center]}>
+          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+            <Text style={[styles.buttonText]}>+</Text>
+          </Pressable>
         </View>
         
       </View>

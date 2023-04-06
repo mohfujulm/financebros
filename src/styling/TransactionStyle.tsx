@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
       height: 'auto',
       // padding: '5%',
     },
+
     mainBackground : {
       backgroundColor: '#F1F7ED',
     },
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     },
     transactionContainer : {
       width: '100%',
-      height: '100%',
+      height:  ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*1.2 : '100%',
     },
     transactionInputContainer: {
       backgroundColor: 'white',

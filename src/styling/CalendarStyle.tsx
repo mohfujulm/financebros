@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     calendarContainer: {
       width: Dimensions.get('window').width,
       height: '100%',
-      paddingBottom : Dimensions.get('window').height*.14
+      paddingBottom : ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.16 : Dimensions.get('window').height*.14,
+
     },
     monthContainer: {
       width: '100%',
-      height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.8 : Dimensions.get('window').height*.7,
+      height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.65 : Dimensions.get('window').height*.7,
       // maxHeight: 600,
       
     },
@@ -32,11 +33,12 @@ const styles = StyleSheet.create({
     //calendar day styling
     monthTitle: {
       width: '100%', 
-      marginHorizontal: '5%',
-      height: 100, 
+      // marginHorizontal: '5%',
+      height: 50, 
     },
     monthText: {
       fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+      textAlign: 'center',
       color: '#375357',
       fontSize: 30,
       // marginTop: '10%',
@@ -90,13 +92,15 @@ const styles = StyleSheet.create({
       height: '5%',
       backgroundColor: '#98C1AC',
     },  
+    
     titleLabel: {
       height: '100%',
       width: '14.2857%',
       // borderWidth: 1,
       // borderColor: 'black',
       
-    },titleText: {
+    },
+    titleText: {
       textAlignVertical: 'center',
       textAlign: 'center',
       color: 'white',
@@ -104,29 +108,7 @@ const styles = StyleSheet.create({
       fontWeight: "400",
       margin: 'auto',
     },
-
-
-
-    footerContainer: {
-      position: 'absolute',
-      bottom: '13.42%',
-      width: '100%',
-      height: '10%',
-      // backgroundColor: '#cce3de',
-    },
-    addTransaction : {
-      width: ( Platform.OS === 'ios' ) ? 60 : 50,
-      backgroundColor: '#42A998',
-      height: ( Platform.OS === 'ios' ) ? 60 : 50,
-      borderTopRightRadius: 50,
-      borderTopLeftRadius: 50,
-      borderBottomLeftRadius: 50,
-      borderBottomRightRadius: 50,
-    },
-    
-
-    
-    //Text Styling
+  //Text Styling
     dayText : {
       margin: '10%',
       fontSize: 15,

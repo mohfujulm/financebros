@@ -13,6 +13,29 @@ const styles  =  StyleSheet.create({
         backgroundColor: '#F1F7ED',
     },
 
+    // top header
+    titlebar: {
+        width: '80%'
+    },
+    sectionHeader: {
+        width: '60%',
+        height: '40%',
+        textAlign: 'right',
+        marginVertical: '3%',
+    },
+    sortButton: {
+        width: '30%',
+        height: '40%',
+        backgroundColor: 'white',
+        borderRadius: 40,
+        marginBottom: '5%',
+    },
+    titleText : {
+        fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+        color: '#375357',
+        fontSize: 26,
+    },
+
     //section styling
     headerContainer: {
         width: '80%',
@@ -20,20 +43,9 @@ const styles  =  StyleSheet.create({
         marginHorizontal: '10%',
         // backgroundColor: 'white',
     },
-    sectionHeader: {
-        width: '60%',
-        fontSize: 30,
-    },
-    sortButton: {
-        marginLeft: '10%',
-        width: '30%',
-        height: '40%',
-        backgroundColor: 'white',
-        borderRadius: 40,
-    },
     mainContainer : {
         width: '100%',
-        height: Dimensions.get('window').height,
+        height: ( Platform.OS === 'ios' ) ? Dimensions.get('window').height*0.1 : Dimensions.get('window').height,
     },
 
     //transaction styling
@@ -45,7 +57,7 @@ const styles  =  StyleSheet.create({
     transactionContainer: {
         width: '100%',
         height: '70%',
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderRadius: 20,
         backgroundColor: 'white',
     },
@@ -92,51 +104,13 @@ const styles  =  StyleSheet.create({
 
 
     //top button styles
-    topButtonText: {
-        fontSize: 12,
-        fontWeight: 'bold',
-    },
-    topButton : {
-        top: '3%',
-        left: '2%',
-        width: '15%',
-        height: '10%',
-    },
-    topButtonStyle : {
-        backgroundColor: 'white',
-        borderRadius: 50,
-        height: '40%',
-        //has to have a height or else fucks up.
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
 
-    //bottom button styles
-    footerContainer: {
-        position: 'absolute',
-        bottom: '13.42%',
-        width: '100%',
-        height: '10%',
-        // backgroundColor: '#cce3de',
-      },
-    addTransaction : {
-        width: ( Platform.OS === 'ios' ) ? 60 : 50,
-        backgroundColor: '#42A998',
-        height: ( Platform.OS === 'ios' ) ? 60 : 50,
-        borderTopRightRadius: 50,
-        borderTopLeftRadius: 50,
-        borderBottomLeftRadius: 50,
-        borderBottomRightRadius: 50,
-    },
-    
-
-    
     //Text Styling
     dayText : {
         margin: '10%',
         fontSize: 15,
     },
-        buttonText: {
+    buttonText: {
         textAlignVertical: 'center',
         textAlign: 'center',
         color: '#C6F5E8',

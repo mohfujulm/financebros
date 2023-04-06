@@ -9,7 +9,7 @@ export default function ProfileMain() {
    
 
     return (
-      <SafeAreaView style = {[Mainstyles.flex]}>
+      <View style = {[Mainstyles.flex]}>
           
         <View style = {[Mainstyles.flex, Mainstyles.pageContainer, Mainstyles.backgroundStyle, Mainstyles.horizontalCenter]}> 
           <ScrollView style= {[Mainstyles.flex, styles.sectionContainer]} 
@@ -38,6 +38,6 @@ export default function ProfileMain() {
           </ScrollView>
         
         </View>
-      </SafeAreaView>
+      </View>
     );
 }

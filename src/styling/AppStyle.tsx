@@ -64,13 +64,9 @@ const Mainstyles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
   },
-  topButton : {
-    top: '3%',
-    left: '5%',
-    width: '15%',
-    height: '10%',
-  },
+
   topButtonStyle : {
+    width: '15%',
     backgroundColor: 'white',
     borderRadius: 50,
     height: '40%',
@@ -79,6 +75,32 @@ const Mainstyles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  //top header variation
+  topHeader: {
+    marginTop: '3%',
+    marginLeft: '5%',
+    width: '90%',
+    height: '10%',
+    // borderWidth: 1,
+  },
+
+  footerContainer: {
+    position: 'absolute',
+    bottom: ( Platform.OS === 'ios' ) ? '15%' : '13.42%' ,
+    width: '100%',
+    height: '10%',
+    // backgroundColor: '#cce3de',
+  },
+  
+  addTransaction : {
+    width: ( Platform.OS === 'ios' ) ? 55 : 50,
+    backgroundColor: '#42A998',
+    height: ( Platform.OS === 'ios' ) ? 55 : 50,
+    borderTopRightRadius: 50,
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+  },
 
   //text color and size
   headerText : {

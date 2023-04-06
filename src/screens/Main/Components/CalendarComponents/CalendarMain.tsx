@@ -6,24 +6,23 @@ import Mainstyles from '../../../../styling/AppStyle';
 import styles from '../../../../styling/CalendarStyle';
 
 
-function calcLeapYear (year: any) {
-  
-  const currentYear:number = year;
-
-  if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) && (currentYear % 400 != 0)){
-    return 29;
-  }else{
-    return 28;
-  }
+function calcLeapYear (year: number) {
+  return (((year % 4 == 0) && (year % 100 != 0)) && (year % 400 != 0)) ? 29: 28;
 }
 
-function setupCalendar(year: any) {
-  let date = new Date(), currentMonth = date.getMonth(), currentDay = date.getDate();
+function setupCalendar(selectedYear: any) {
+  let date = new Date(), currentYear= date.getFullYear(), currentMonth = date.getMonth(), currentDay = date.getDate();
   
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-  ];
-  const monthdays = [31, calcLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  const monthNames = ["January", "February", 
+                      "March", "April", "May",
+                      "June", "July", "August",
+                      "September", "October", 
+                      "November", "December"
+                     ];
+
+  const monthdays = [31, calcLeapYear(selectedYear),
+                     31, 30, 31, 30, 31, 31, 30, 31, 
+                     30, 31]
 
   //iterate over items and add in the appropriate days
   const months:JSX.Element[] = [];
@@ -32,7 +31,7 @@ function setupCalendar(year: any) {
   
     const days:JSX.Element[] = [];
 
-    const firstDay = new Date(year, m, 1).getDay()
+    const firstDay = new Date(selectedYear, m, 1).getDay() //get the index of the first day of the month
     
     let numDays = firstDay+monthdays[m] //add up all the days
     if (!(numDays % 7 === 0)){ //if it isnt divivisble by 7
@@ -53,31 +52,35 @@ function setupCalendar(year: any) {
 
       }
 
-    for(let i = 0; i< firstDay; i++){
+    for(let i = 0; i< firstDay; i++){ //push all days not in the month first
       days.push( <View key={'Month: ' + monthNames[m] + ', Placeholder:' + String(i)} style= {[styler]}></View>)
     }
 
+    // push days in the month
     for(let d = 1; d< (numDays-firstDay)+1; d++){
       const navigation = useNavigation();
       
       if (d < monthdays[m]+1){
-        if(d == currentDay && m == currentMonth){ //if its the current month and day, seperate style.
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(d)}</Text></Pressable>)
+        if(d == currentDay && m == currentMonth && selectedYear == currentYear){ //if its the current month and day, seperate style.
+          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(d)}</Text></Pressable>)
         }else{
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + String(m) + ', Day:' + String(d)} style= {[styler, styles.day]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
+          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.day]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
         }
       }else{
         days.push( <View key={'Month:' + monthNames[m] + ', Placeholder:' + String(d)} style= {[styler]}></View>)
       }
       
-    
     }
-    let monthContainer =  <>
-                            <View style={[styles.monthTitle, Mainstyles.verticalCenter]}><Text style={[styles.monthText]}>{monthNames[m]}</Text></View>
+    //put those days into a container
+    let monthContainer =  <View key={'Month:' + monthNames[m]}>
+                            <View style={[styles.monthTitle, Mainstyles.center]}>
+                              <Text style={[styles.monthText]}>{monthNames[m]}</Text>
+                            </View>
                             <View style={[styles.monthContainer, Mainstyles.flexCol]}>
                               <View style={[styles.dayContainer,Mainstyles.flexRow]}>{days}</View>
                             </View>
-                          </>
+                          </View>
+    //add all the containers into an array.
     months.push(monthContainer)
     
   }
@@ -102,15 +105,17 @@ export default function CalendarMain({navigation}) : JSX.Element {
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>F</Text></View>
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>S</Text></View>
           </View>
-          <ScrollView  contentOffset={{x:0,y:1000}}contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+          <ScrollView  contentOffset={{x:0,y:3000}} contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
             <View style={[styles.calendarContainer]}>
               
-              {setupCalendar(new Date().getFullYear())}
+              {setupCalendar('2023')}
             </View>
             
           </ScrollView>
-          <View style = {[styles.footerContainer, Mainstyles.flexCol, Mainstyles.center]}>
-            <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}} style = {[styles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+
+          {/* Bottom Button */}
+          <View style = {[Mainstyles.footerContainer, Mainstyles.flexCol, Mainstyles.center]}>
+            <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
                 <Text style={[styles.buttonText]}>+</Text>
               </Pressable>
           </View>

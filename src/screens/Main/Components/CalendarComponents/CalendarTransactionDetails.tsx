@@ -239,15 +239,15 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
     }
 
         return (
-        <SafeAreaView style = {[Mainstyles.flex]}>
-            <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle, Mainstyles.flex,]}> 
+        <View style = {[Mainstyles.flex]}>
+            <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle, Mainstyles.flex]}> 
                 <ScrollView style={[Mainstyles.flex, styles.sectionContainer]}
                         alwaysBounceVertical={true}
                         >
                     {/* Top Button */}
-                    <View style= {[Mainstyles.topButton]}>
+                    <View style= {Mainstyles.topHeader}>
                         <Pressable style = {[Mainstyles.topButtonStyle]} onPress={() => navigation.goBack()}> 
-                            <Text>{'<-'}</Text> 
+                            <Text style={[Mainstyles.topButtonText]}>{'<-'}</Text> 
                         </Pressable>
                     </View>
                     
@@ -255,8 +255,9 @@ export default function CalendarTransactionDetails({navigation},selectedDate:any
                     <View style={[Mainstyles.horizontalCenter, styles.transactionContainer]}>
                         {displayScreen}
                     </View>
+                    
                 </ScrollView>
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
