@@ -18,8 +18,9 @@ interface ItemProps { //for dealing with child components that need a usestate p
     setMyVar?: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function CalendarTransactionDetails({navigation},selectedDate:any) {
-    
+export default function CalendarTransactionDetails({route, navigation},selectedDate:any) {
+    // const {cYear, cMonth, cDay} = route.params
+    console.log(route.params)
     const [editTrans, seteditTrans] = useState(true)
     const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
     //if edit trans == false, then display editcontainer, else display maincontainer

@@ -15,12 +15,14 @@ const styles  =  StyleSheet.create({
 
     // top header
     titlebar: {
-        width: '80%'
+        width: '100%',
+        height: '80%',
+        
     },
     sectionHeader: {
-        width: '60%',
-        height: '40%',
-        textAlign: 'right',
+        // width: '60%',
+        marginTop: '15%',
+        height: '50%',
         marginVertical: '3%',
     },
     sortButton: {
