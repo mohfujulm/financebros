@@ -200,8 +200,9 @@ function Transaction (props: ItemProps){
   )
 }
 
-export default function CalendarDayDetails({navigation}) {
+export default function CalendarDayDetails({route, navigation}) {
     // console.log(navigation)
+    const {cYear, cMonth, cDay} = route.params
 
     const ListFooter = ():JSX.Element =>  {
       return(
@@ -221,18 +222,22 @@ export default function CalendarDayDetails({navigation}) {
       <View style = {[Mainstyles.backgroundStyle, Mainstyles.pageContainer]}> 
         
         {/* Header  */}
-        <View style= {[Mainstyles.topHeader, Mainstyles.flexRow, Mainstyles.center]}>
-          <Pressable style = {[Mainstyles.topButtonStyle]} onPress = {() => navigation.goBack()}> 
-              <Text style = {[Mainstyles.topButtonText]}>{'<-'}</Text> 
-          </Pressable>
-          <View style = {[styles.titlebar, Mainstyles.flexCol, Mainstyles.flexRight, Mainstyles.verticalCenter]}>
-            <Text style = {[styles.sectionHeader, styles.titleText]}>Transactions:</Text>
+        <View style= {[Mainstyles.topHeader, Mainstyles.flexCol, Mainstyles.verticalCenter, Mainstyles.flexSpaceBetween]}>
+          <View style={[{width: '100%', height: '100%'}, Mainstyles.flexRow, Mainstyles.flexSpaceBetween,]}>
+            <Pressable style = {[Mainstyles.topButtonStyle]} onPress = {() => navigation.goBack()}> 
+                <Text style = {[Mainstyles.topButtonText]}>{'<-'}</Text> 
+            </Pressable>
+            
             <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]} onPress={() => navigation.goBack()}> 
                 <Text>Sort - Time</Text> 
             </Pressable>
           </View>
           
+          <View style={[{width: '100%'}, Mainstyles.center]}>          
+            <Text style = {[styles.sectionHeader, styles.titleText, Mainstyles.center, {top: '-88%'}]}>Transactions:</Text>
+          </View>  
         </View>
+        
 
         
         {/* Render flatlist here.*/}

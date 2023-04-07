@@ -62,9 +62,9 @@ function setupCalendar(selectedYear: any) {
       
       if (d < monthdays[m]+1){
         if(d == currentDay && m == currentMonth && selectedYear == currentYear){ //if its the current month and day, seperate style.
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(d)}</Text></Pressable>)
+          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails', {cYear: currentYear, cMonth: m, cDay: d})} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.currentDay]}><Text style ={[styles.dayText, styles.currentNumber]}>{String(d)}</Text></Pressable>)
         }else{
-          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails')} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.day]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
+          days.push( <Pressable onPress={() => navigation.navigate('CalendarDayDetails', {cYear: currentYear, cMonth: m, cDay: d})} key={'Month:' + monthNames[m] + ', Day:' + String(d)} style= {[styler, styles.day]}><Text style ={[styles.dayText, styles.dayTwoNumber]}>{String(d)}</Text></Pressable>)
         }
       }else{
         days.push( <View key={'Month:' + monthNames[m] + ', Placeholder:' + String(d)} style= {[styler]}></View>)
@@ -90,7 +90,7 @@ function setupCalendar(selectedYear: any) {
 
 //component
 
-export default function CalendarMain({navigation}) : JSX.Element {
+export default function CalendarMain({route, navigation}) : JSX.Element {
 
     return (
       <SafeAreaView>
