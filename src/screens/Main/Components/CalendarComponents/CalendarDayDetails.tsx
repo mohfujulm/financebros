@@ -141,8 +141,6 @@ const userData = [
   },
 ]
 
-
-
 type ItemProps = {info: TransInfo};
 
 interface TransInfo {
@@ -158,7 +156,6 @@ function Transaction (props: ItemProps){
   const info = props.info;
   const navigation = useNavigation();
   
-
   //variable declarations
   const name = info.name, amount = info.amount, date = info.date;
   let time, category = info.category, account = info.account;
@@ -200,9 +197,15 @@ function Transaction (props: ItemProps){
   )
 }
 
-export default function CalendarDayDetails({route, navigation}) {
+
+interface viewProps {
+  route: any;
+  navigation: any;
+};
+
+export default function CalendarDayDetails({route, navigation} : viewProps) {
     // console.log(navigation)
-    const {cYear, cMonth, cDay} = route.params
+    const {cYear, cMonth, cDay} = route.params; //initiate route parameters
 
     const ListFooter = ():JSX.Element =>  {
       return(
@@ -228,14 +231,14 @@ export default function CalendarDayDetails({route, navigation}) {
                 <Text style = {[Mainstyles.topButtonText]}>{'<-'}</Text> 
             </Pressable>
             
-            <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]} onPress={() => navigation.goBack()}> 
+            <Pressable style = {[styles.sortButton, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}> 
                 <Text>Sort - Time</Text> 
             </Pressable>
           </View>
           
           <View style={[{width: '100%'}, Mainstyles.center]}>          
-            <Text style = {[styles.sectionHeader, styles.titleText, Mainstyles.center, {top: '-88%'}]}>Transactions:</Text>
-          </View>  
+            <Text style = {[styles.sectionHeader, styles.titleText, Mainstyles.center, {top: '-88%'}]}>{'Transactions ('+(cMonth+1) + '/' + cDay +') :'}</Text>
+          </View>
         </View>
         
 

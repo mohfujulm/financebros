@@ -11,27 +11,20 @@ import styles from '../../../../styling/TransactionStyle';
 
 
 
-//probably will need to make an interface
-interface ItemProps { //for dealing with child components that need a usestate passed to it
-    //Reference : https://stackoverflow.com/questions/56028635/passing-usestate-as-props-in-typescript
-    myVar: boolean;
-    setMyVar?: Dispatch<SetStateAction<boolean>>;
-}
+interface viewProps {
+    route: any;
+    navigation: any;
+  };
 
-export default function CalendarTransactionDetails({route, navigation},selectedDate:any) {
+export default function CalendarTransactionDetails({route, navigation} : viewProps, selectedDate:any) {
     // const {cYear, cMonth, cDay} = route.params
-    console.log(route.params)
     const [editTrans, seteditTrans] = useState(true)
-    const displayScreen = (editTrans == false) ? <EditContainer/> : <MainContainer />
+    const displayScreen = (editTrans == false) ? <EditContainer/> : <DisplayContainer />
     //if edit trans == false, then display editcontainer, else display maincontainer
 
-    const changeTrans = () => {
+    const changeTrans = () => seteditTrans(!editTrans);
     
-            seteditTrans(!editTrans);
-        
-    }
-    
-    function MainContainer(props:object) : JSX.Element{
+    function DisplayContainer() : JSX.Element{
         //take data and render it here.
     
         //then return it inside of the element.
@@ -117,7 +110,7 @@ export default function CalendarTransactionDetails({route, navigation},selectedD
             //check required fields
 
                 function checkReqs (name : string, date: string, amount: string) {
-                    return (transaction.name === '' || transaction.date === '' || transaction.amount === '')
+                    return (name === '' || date === '' || amount === '')
                 }
 
             //check network connection  

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, View, Text, Pressable} from 'react-native';
+import { Platform, Dimensions, SafeAreaView, ScrollView, View, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Mainstyles from '../../../../styling/AppStyle';
@@ -77,7 +77,9 @@ function setupCalendar(selectedYear: any) {
                               <Text style={[styles.monthText]}>{monthNames[m]}</Text>
                             </View>
                             <View style={[styles.monthContainer, Mainstyles.flexCol]}>
-                              <View style={[styles.dayContainer,Mainstyles.flexRow]}>{days}</View>
+                              <View style={[styles.dayContainer,Mainstyles.flexRow]}>
+                                {days}
+                              </View>
                             </View>
                           </View>
     //add all the containers into an array.
@@ -89,8 +91,20 @@ function setupCalendar(selectedYear: any) {
 }
 
 //component
+interface viewProps {
+  route: any;
+  navigation: any;
+};
 
-export default function CalendarMain({route, navigation}) : JSX.Element {
+export default function CalendarMain({route, navigation} : viewProps) : JSX.Element {
+
+    //calculate current 
+    let curDate = new Date();
+    let curYear = curDate.getFullYear();
+    let curMonth = curDate.getMonth();
+    let increment = (( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.71 : Dimensions.get('window').height*.76)
+    // console.log(increment)
+    let curYoffset = curMonth * increment;
 
     return (
       <SafeAreaView>
@@ -105,7 +119,8 @@ export default function CalendarMain({route, navigation}) : JSX.Element {
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>F</Text></View>
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>S</Text></View>
           </View>
-          <ScrollView  contentOffset={{x:0,y:3000}} contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+          <ScrollView  contentOffset={{x:0,y:curYoffset}} contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+            {/* each unit is around 600 per offset */}
             <View style={[styles.calendarContainer]}>
               
               {setupCalendar('2023')}

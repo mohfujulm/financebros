@@ -1,7 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native"
 
-
-
 const styles  =  StyleSheet.create({
     sectionContainer: {
         flex: 1,
@@ -70,7 +68,7 @@ const styles  =  StyleSheet.create({
         marginLeft: '2%',
         width: '10%',
         height: '50%',
-        backgroundColor: 'grey',
+        // backgroundColor: 'grey',
     },
     imageContainer : {
         borderRadius: 50,
