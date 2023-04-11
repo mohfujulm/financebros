@@ -36,7 +36,7 @@ function LineGraph(props:any){
       };
   return(
     <View style={[styles.graphComponent, Mainstyles.border, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}>
-        <Text>Total Spending</Text>
+        <Text style={[styles.graphHeader]}>Total Spending</Text>
         <LineChart
             data={data}
             chartConfig={chartConfig}
@@ -94,7 +94,7 @@ function CircleGraph(props:any){
       };
   return(
     <View style={[styles.graphComponent, Mainstyles.border, Mainstyles.verticalCenter, Mainstyles.horizontalCenter]}>
-        <Text>Top 5 Spending Categories</Text>
+        <Text style={[styles.graphHeader]}>Top 5 Spending Categories</Text>
         <PieChart
             data={data}
             width={Dimensions.get("window").width*.80}

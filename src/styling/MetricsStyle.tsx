@@ -18,8 +18,11 @@ const styles = StyleSheet.create({
         marginHorizontal: '6%',
         backgroundColor: '#CAF5E0',
     },
-    graphHeader : {
-        fontSize: 20,
+    graphHeader: {
+        fontSize: 23,
+        fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
+        color: '#375357',
+        margin: '5%'
     },
 
 
@@ -47,7 +50,6 @@ const styles = StyleSheet.create({
         fontFamily: ( Platform.OS === 'ios' ) ? 'HelveticaNeue' : 'serif',
         color: 'white',
         fontSize: 11,
-
     }
   });
 
