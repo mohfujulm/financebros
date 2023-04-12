@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
     //Header
     header :{
-        height: Dimensions.get('window').height*.2,
+        height: Dimensions.get('window').height*.13,
         marginBottom: '1%',
     },
     sortSection : {

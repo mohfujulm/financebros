@@ -17,7 +17,7 @@ import styles from '../../../../styling/MetricsStyle';
 
 function LineGraph(props:any){
     const selectedSort = props.selectedSort
-    console.log(selectedSort)
+    // console.log(selectedSort)
 
     const data = {
         labels: ["January", "February", "March", "April", "May", "June"],
@@ -50,7 +50,7 @@ function LineGraph(props:any){
 
 function CircleGraph(props:any){
   const selectedSort = props.selectedSort
-  console.log(selectedSort)
+  // console.log(selectedSort)
 
     const data = [
         {
@@ -115,25 +115,53 @@ function CircleGraph(props:any){
 
 export default function MetricsMain() {
   let [selected, changeSelected] = React.useState('Weekly')
-  function SortContainer(props:any){
-    const selectedSort = props.selectedSort
-    console.log(selectedSort)
-    
-    return(
-      <View style= {[styles.sortSection, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
-          {/* <Text style = {[styles.sortText]}>Sort By:</Text> */}
-          <Pressable onPress={() => changeSelected('Daily')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Daily</Text></Pressable>
-        
-          <Pressable onPress={() => changeSelected('Weekly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Weekly</Text></Pressable>
   
-          <Pressable onPress={() => changeSelected('Monthly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Monthly</Text></Pressable>
-        
-          <Pressable onPress={() => changeSelected('Yearly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Yearly</Text></Pressable>
-        
-      </View>
+  let date = new Date(), curYear = date.getFullYear(), curMonth = date.getMonth(), curDate = date.getDate()
+  let selectedText: string = updateHeader(selected, curYear, curMonth, curDate)
+  // console.log(curMonth, curYear, typeof(curMonth))
+
+    function updateHeader(time:string, year: number, month: number, day: number){
+      let newText: string;
+      const monthNames = ["January", "February", 
+                      "March", "April", "May",
+                      "June", "July", "August",
+                      "September", "October", 
+                      "November", "December"
+                     ];
+
+      if (time == "Daily"){
+        newText = 'Daily Expenses for ' + String(month+1) + '/' + String(day)
+      }else if(time == 'Weekly'){
+        newText = 'Expenses: Week of ' + String(month+1) + '/' + String(day)
+      }else if(time == 'Monthly'){
+        newText = 'Expenses for ' + monthNames[month]
+      }else{
+        newText = 'Expenses for ' + String(year)
+      }
+      return newText;
+    }
+    
+  
+    function SortContainer(props:any){
+      const selectedSort = props.selectedSort
+      // console.log(selectedSort)
       
-    );
-  }
+      return(
+        <View style= {[styles.sortSection, Mainstyles.flexRow, Mainstyles.horizontalCenter]}>
+            {/* <Text style = {[styles.sortText]}>Sort By:</Text> */}
+            <Pressable onPress={() => changeSelected('Daily')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Daily</Text></Pressable>
+          
+            <Pressable onPress={() => changeSelected('Weekly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Weekly</Text></Pressable>
+    
+            <Pressable onPress={() => changeSelected('Monthly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Monthly</Text></Pressable>
+          
+            <Pressable onPress={() => changeSelected('Yearly')} style= {[styles.sortButton, Mainstyles.borderRadius,Mainstyles.flexCol,Mainstyles.verticalCenter]}><Text style={[styles.buttonText, Mainstyles.textAlignCenter]}>Yearly</Text></Pressable>
+          
+        </View>
+        
+      );
+    }
+
     return (
       <View style = {[Mainstyles.pageContainer, Mainstyles.backgroundStyle]}> 
         <ScrollView style= {[Mainstyles.flex]} 
@@ -141,7 +169,7 @@ export default function MetricsMain() {
                 alwaysBounceVertical={false}
         >
           <View style={[styles.header, Mainstyles.flexCol, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
-            <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>Week of 3/15</Text>
+            <Text style = {[Mainstyles.headerText, Mainstyles.centerText]}>{selectedText}</Text>
                 
             <SortContainer selectedSort={selected}/>  
           </View>

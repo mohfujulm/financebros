@@ -90,6 +90,8 @@ function setupCalendar(selectedYear: any) {
   
 }
 
+
+
 //component
 interface viewProps {
   route: any;
@@ -102,7 +104,18 @@ export default function CalendarMain({route, navigation} : viewProps) : JSX.Elem
     let curDate = new Date();
     let curYear = curDate.getFullYear();
     let curMonth = curDate.getMonth();
-    let increment = (( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.71 : Dimensions.get('window').height*.76)
+    let increment = (( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.71 : Dimensions.get('window').height*.758)
+    let offSetIncrements =  [0, Math.floor(increment*1), 
+                              Math.floor(increment*2), 
+                              Math.floor(increment*3),
+                              Math.floor(increment*5),
+                              Math.floor(increment*6),
+                              Math.floor(increment*7),
+                              Math.floor(increment*8),
+                              Math.floor(increment*9),
+                              Math.floor(increment*10),
+                              Math.floor(increment*11),
+                            ]
     // console.log(increment)
     let curYoffset = curMonth * increment;
 
@@ -119,13 +132,18 @@ export default function CalendarMain({route, navigation} : viewProps) : JSX.Elem
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>F</Text></View>
             <View style = {[styles.titleLabel, Mainstyles.flexCol, Mainstyles.center]}><Text style={[styles.titleText]}>S</Text></View>
           </View>
-          <ScrollView  contentOffset={{x:0,y:curYoffset}} contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}>
+          <ScrollView  
+                snapToOffsets = {offSetIncrements}
+                decelerationRate="fast" 
+                contentOffset={{x:0,y:curYoffset}} 
+                contentContainerStyle={[Mainstyles.flexCol, Mainstyles.horizontalCenter]}
+                showsVerticalScrollIndicator={false}
+                >
             {/* each unit is around 600 per offset */}
             <View style={[styles.calendarContainer]}>
               
               {setupCalendar('2023')}
             </View>
-            
           </ScrollView>
 
           {/* Bottom Button */}
