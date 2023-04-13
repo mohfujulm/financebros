@@ -16,10 +16,13 @@ interface viewProps {
     navigation: any;
   };
 
-export default function CalendarTransactionDetails({route, navigation} : viewProps, selectedDate:any) {
-    // const {cYear, cMonth, cDay} = route.params
-    const [editTrans, seteditTrans] = useState(true)
-    const displayScreen = (editTrans == false) ? <EditContainer/> : <DisplayContainer />
+export default function CalendarTransactionDetails({route, navigation} : viewProps) {
+    let editMode;
+    route.params !== undefined ? {editMode} = route.params : editMode = false;
+
+    const [editTrans, seteditTrans] = useState(editMode)
+    console.log(editTrans, editMode)
+    const displayScreen = (editTrans == true) ? <EditContainer/> : <DisplayContainer />
     //if edit trans == false, then display editcontainer, else display maincontainer
 
     const changeTrans = () => seteditTrans(!editTrans);
@@ -42,7 +45,7 @@ export default function CalendarTransactionDetails({route, navigation} : viewPro
                         <View style={[styles.rightinfoContainer, Mainstyles.flexCol]}>
                             <View style={[styles.infoHeader, Mainstyles.flexRight, Mainstyles.verticalCenter]}> 
                                 <Text style={[Mainstyles.headerText]}>3/15</Text>
-                                </View>
+                            </View>
                         </View>
                     </View>
     

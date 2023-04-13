@@ -39,18 +39,18 @@ function setupCalendar(selectedYear: any) {
       
     }
     let styler;
-      switch(numDays/7){
-        case 4:
-          styler = styles.containerThree; //height is 25% if there are 4 rows
-          break
-        case 5:
-          styler = styles.containerTwo; //height is 20% if there are 5 rows
-          break
-        case 6:
-          styler = styles.containerOne; //height is 16.7% if there are 6 rows
-          break
+    switch(numDays/7){
+      case 4:
+        styler = styles.containerThree; //height is 25% if there are 4 rows
+        break
+      case 5:
+        styler = styles.containerTwo; //height is 20% if there are 5 rows
+        break
+      case 6:
+        styler = styles.containerOne; //height is 16.7% if there are 6 rows
+        break
 
-      }
+    }
 
     for(let i = 0; i< firstDay; i++){ //push all days not in the month first
       days.push( <View key={'Month: ' + monthNames[m] + ', Placeholder:' + String(i)} style= {[styler]}></View>)
@@ -105,17 +105,9 @@ export default function CalendarMain({route, navigation} : viewProps) : JSX.Elem
     let curYear = curDate.getFullYear();
     let curMonth = curDate.getMonth();
     let increment = (( Platform.OS === 'ios' ) ? Dimensions.get('window').height*.71 : Dimensions.get('window').height*.758)
-    let offSetIncrements =  [0, Math.floor(increment*1), 
-                              Math.floor(increment*2), 
-                              Math.floor(increment*3),
-                              Math.floor(increment*5),
-                              Math.floor(increment*6),
-                              Math.floor(increment*7),
-                              Math.floor(increment*8),
-                              Math.floor(increment*9),
-                              Math.floor(increment*10),
-                              Math.floor(increment*11),
-                            ]
+    let offSetIncrements =  [];
+    for (let i = 0; i< 12; i++) offSetIncrements.push(Math.floor(increment*i));
+    
     // console.log(increment)
     let curYoffset = curMonth * increment;
 
@@ -148,7 +140,7 @@ export default function CalendarMain({route, navigation} : viewProps) : JSX.Elem
 
           {/* Bottom Button */}
           <View style = {[Mainstyles.footerContainer, Mainstyles.flexCol, Mainstyles.center]}>
-            <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+            <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails', {editMode: true})}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
                 <Text style={[styles.buttonText]}>+</Text>
               </Pressable>
           </View>

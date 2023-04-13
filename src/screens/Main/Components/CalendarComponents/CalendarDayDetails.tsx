@@ -259,7 +259,7 @@ export default function CalendarDayDetails({route, navigation} : viewProps) {
 
         {/* Button */}
         <View style = {[Mainstyles.footerContainer, Mainstyles.flexCol, Mainstyles.center]}>
-          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails')}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
+          <Pressable onPress={() => {navigation.navigate('CalendarTransactionDetails', {editMode: true})}} style = {[Mainstyles.addTransaction, Mainstyles.horizontalCenter, Mainstyles.verticalCenter]}>
             <Text style={[styles.buttonText]}>+</Text>
           </Pressable>
         </View>
